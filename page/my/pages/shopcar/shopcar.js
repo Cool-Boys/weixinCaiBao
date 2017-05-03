@@ -3,11 +3,7 @@ Page({
         shopdata: [
             { id: 1, name: '饭包', memo: '', saucetype: '鸡蛋酱+豆瓣酱', imageUrl: '../../../../image/fb.jpg', price: 6 },
             { id: 2, name: '饭包', memo: '', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 },
-            { id: 3, name: '冷面', memo: '加烤肠', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 },
-            { id: 4, name: '饭包', memo: '', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 },
-            { id: 5, name: '饭包', memo: '', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 },
-            { id: 6, name: '饭包', memo: '', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 },
-            { id: 7, name: '饭包', memo: '', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 },
+            { id: 3, name: '冷面', memo: '加烤肠', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 }
         ],
         flavortype: [
             { name: '葱', flavortype: '1', ischeck: false },
@@ -142,7 +138,7 @@ Page({
         console.log('备注：' + this.data.message);
 
 
-        
+
         wx.switchTab({
             url: '/page/my/pages/myInfo/myInfo'
         })
