@@ -13,11 +13,24 @@
           </view>
           <view class="flex-item flex-item-text">
             <input bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}" placeholder="请备注您的食材" bindinput="bindKeyInput" bindblur="bindblurInput" value="{{item.memo}}" auto-focus />
-            <input bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}"  value="{{item.saucetype}}"  placeholder="请备注您的口味"/>
+            <input bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}" value="{{item.saucetype}}" placeholder="请备注您的口味" />
           </view>
-          <view class="flex-item" style="width:100rpx;">
-            <lable bindtap="deletedata" data-index="{{index}}">删除</lable>
-          </view>
+          <!--一套-->
+          <block wx:if="{{index>0}}">
+            <view class="flex-item flex-item-label" style="width:100rpx;">
+              <lable class="flex-item-label">同上</lable>
+            </view>
+            <view class="flex-item " style="width:100rpx;">
+              <lable class="flex-item-label" bindtap="deletedata" data-index="{{index}}">删除</lable>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="flex-item " style="width:100rpx;">
+              <lable class="flex-item-label" bindtap="deletedata" data-index="{{index}}">删除</lable>
+            </view>
+            <view class="flex-item " style="width:100rpx;"></view>
+          </block>
+          <!--end-->
         </view>
       </block>
       <block wx:else>
@@ -29,15 +42,15 @@
     <view class="flex-wrp-tips" style="background:#fff;height:300rpx;">
       <view style=" display: flex;  flex-direction: row;" wx:for="{{flavortype}}">
         <label style="width:15%">{{item.name}}</label>
-        <radio-group class="radio-group" bindchange="radioChange" data-text="{{item.name}}"  data-index="{{index}}">
+        <radio-group class="radio-group" bindchange="radioChange" data-text="{{item.name}}" data-index="{{index}}">
           <label class="radio" style="width:30%;height:55rpx;background:#D2D2D2;color:#fff;margin:10rpx;">
             <radio value="多放{{item.name}}" checked="{{item.ischeck}}" />多放
           </label>
           <label class="radio" style="width:30%;height:55rpx; background:#D2D2D2;color:#fff;margin:10rpx;">
-            <radio value="少放{{item.name}}" checked="{{item.ischeck}}"/>少放
+            <radio value="少放{{item.name}}" checked="{{item.ischeck}}" />少放
           </label>
           <label class="radio" style="width:30%;height:55rpx; background:#D2D2D2;color:#fff;margin:10rpx;">
-            <radio value="不放{{item.name}}" checked="{{item.ischeck}}"/>不放
+            <radio value="不放{{item.name}}" checked="{{item.ischeck}}" />不放
           </label>
         </radio-group>
       </view>
@@ -68,11 +81,11 @@
         <text>嘱咐卖家:</text>
       </view>
       <view class="flex-item flex-item-text" style="flex:5">
-        <input  bindinput="bindMessageInput"/>
+        <input bindinput="bindMessageInput" />
       </view>
     </view>
     <view class="btn">
-      <button type="primary" bindtap="bindSubmit" >提交</button>
+      <button type="primary" bindtap="bindSubmit">提交</button>
     </view>
   </view>
 </view>

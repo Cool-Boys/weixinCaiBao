@@ -25,11 +25,18 @@ Page({
     indicatorDots: false,
     autoplay: false,
     interval: 5000,
-    duration: 1000
+    duration: 1000,
+    hidden:false,
+    nocancel:false
 
 
 
   },
+  changeHidden: function(){
+        this.setData({
+            hidden: !this.data.hidden
+        });
+    },
   onLoad: function (options) {
     // 生命周期函数--监听页面加载
     console.log('onload');
@@ -133,6 +140,26 @@ Page({
       }
     })
 
-  }
+  },
+    cancel: function(){
+        this.setData({
+             hidden: true
+        });
+    },
+    confirm: function(){
+        this.setData({
+             nocancel: !this.data.nocancel
+        });    
+        console.log("clicked confirm");
+    } 
+    ,open: function(){
+        console.log("延时调用");
+    },
+    close: function(){
+        this.setData({
+            hidden:true
+    });
+        console.log("关闭弹框");
+    }
 
 })

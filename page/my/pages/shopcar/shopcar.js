@@ -45,7 +45,7 @@ Page({
             curNav: id,
             curIndex: index,
             saucetype: tt,
-            flavortype:dd
+            flavortype: dd
         })
     },
 
@@ -80,7 +80,7 @@ Page({
     checkboxChange: function (e) {
         console.log('checkbox发生change事件，携带value值为：', e.detail.value)
         let text = e.detail.value;
-        this.data.shopdata[this.data.curIndex].saucetype = text.toString().replace(/,/g, "+");
+        this.data.shopdata[this.data.curIndex].saucetype = ' ' + text.toString().replace(/,/g, "+");
 
         this.setData(
             { shopdata: this.data.shopdata }
@@ -132,7 +132,7 @@ Page({
         let str = '';
         let amount = 0;
         for (var i = 0; i < this.data.shopdata.length; i++) {
-            str += this.data.shopdata[i].name + " " + this.data.shopdata[i].memo;
+            str += this.data.shopdata[i].name + "  配料：" + this.data.shopdata[i].memo+"  口味：" + this.data.shopdata[i].saucetype;
             amount += this.data.shopdata[i].price;
         }
 
@@ -140,6 +140,9 @@ Page({
 
         console.log('预定时间：' + this.data.time);
         console.log('备注：' + this.data.message);
+
+
+        
         wx.switchTab({
             url: '/page/my/pages/myInfo/myInfo'
         })
