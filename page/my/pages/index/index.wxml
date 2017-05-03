@@ -1,0 +1,61 @@
+<view class="container">
+  <view class="page-body">
+    <button type="primary">页面主操作 Normal</button>
+    <text>{{message}}</text>
+    <view wx:for="{{array}}"> {{item}} </view>
+    <text>{{message1}}</text>
+    <view wx:if="{{view=='WEBVIEW'}}">WEBVIEW</view>
+    <view wx:elif="{{view == 'APP'}}"> APP </view>
+    <view wx:else="{{view == 'MINA'}}"> MINA </view>
+    <template name="staffName">
+      <view>
+        FirstName: {{firstName}}, LastName: {{lastName}}
+      </view>
+    </template>
+    <template is="staffName" data="{{...staffA}}"></template>
+    <template is="staffName" data="{{...staffB}}"></template>
+    <template is="staffName" data="{{...staffC}}"></template>
+    <switch wx:for="{{objectArray}}" wx:key="unique" style="display: block;"> {{item.id}} </switch>
+<radio-group class="radio-group" wx:for="{{array}}" >
+  <label class="radio" wx:for="{{objectArray}}">
+    <radio value="{{item.unique}}" />{{item.id}}
+  </label>
+</radio-group>
+
+
+    <button bindtap="switch"> Switch </button>
+    <button bindtap="addToFront"> Add to the front </button>
+    <switch wx:for="{{numberArray}}" wx:key="*this" style="display: block;"> {{item}} </switch>
+    <button bindtap="addNumberToFront"> Add to the front </button>
+  </view>
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="flex-item demo-text-1"></view>
+    <view class="flex-item demo-text-2"></view>
+    <view class="flex-item demo-text-3"></view>
+  </view>
+  <view class="page-section-title">
+    <text>flex-direction: column\n纵向布局</text>
+  </view>
+  <view class="flex-wrp" style="flex-direction:column;">
+    <view class="flex-item flex-item-V demo-text-1"></view>
+    <view class="flex-item flex-item-V demo-text-2"></view>
+    <view class="flex-item flex-item-V demo-text-3"></view>
+  </view>
+
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="100%" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+<button bindtap="changeIndicatorDots"> indicator-dots </button>
+<button bindtap="changeAutoplay"> autoplay </button>
+<slider bindchange="intervalChange" show-value min="500" max="2000"/> interval
+<slider bindchange="durationChange" show-value min="1000" max="10000"/> duration
+<view  class="flex-wrp" style="flex-direction:row;">
+<text>{{reurnData}}</text>
+<button bindtap="getData"> 请求数据接口 </button>
+</view>
+</view>

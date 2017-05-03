@@ -1,0 +1,36 @@
+.container {
+  background-color: #9df88f;
+  color: #000;
+}
+
+.flex-wrp {
+  margin-top: 10rpx;
+  display: flex;
+}
+
+.flex-item {
+  width: 100%;
+  height: 100%;
+  font-size: 26rpx;
+}
+
+.flex-item-1 {
+  margin: 0 auto;
+  width: 100%;
+  height: 300rpx;
+}
+
+.flex-item-2 {
+  margin: 0 auto;
+  width: 90%;
+  height: 710rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+ 
+}
+
+.flex-item-3 {
+  margin: 0 auto;
+  width: 100%;
+  
+}
