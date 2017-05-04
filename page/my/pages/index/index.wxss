@@ -1,3 +1,10 @@
+.container {
+  background-color: #9df88f;
+  color: #000;
+  padding: 10rpx;
+  font-size: 22rpx;
+}
+
 .flex-wrp{
   margin-top: 60rpx;
   display:flex;

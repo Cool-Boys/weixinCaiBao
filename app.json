@@ -1,10 +1,10 @@
 {
   "pages": [
-     "page/my/pages/shopcar/shopcar",
     "page/my/pages/show/show",
+    "page/my/pages/shopcar/shopcar",
     "page/my/pages/index/index",
     "page/my/pages/myInfo/myInfo",
-   
+    "page/my/pages/orderInfo/orderInfo",
     "page/component/index",
     "page/component/pages/view/view",
     "page/component/pages/scroll-view/scroll-view",
@@ -79,17 +79,17 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "page/my/pages/shopcar/shopcar",
-        "iconPath": "image/icon_API.png",
-        "selectedIconPath": "image/icon_API_HL.png",
-        "text": "购物车"
-      }, {
         "pagePath": "page/my/pages/show/show",
         "iconPath": "image/icon_API.png",
         "selectedIconPath": "image/icon_API_HL.png",
         "text": "首页"
       },
-     
+      {
+        "pagePath": "page/my/pages/shopcar/shopcar",
+        "iconPath": "image/icon_API.png",
+        "selectedIconPath": "image/icon_API_HL.png",
+        "text": "购物车"
+      },
       {
         "pagePath": "page/my/pages/myInfo/myInfo",
         "iconPath": "image/icon_API.png",

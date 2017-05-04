@@ -1,0 +1,13 @@
+.container {
+  background-color: #9df88f;
+  color: #A0A0A0;
+  padding: 10rpx;
+  font-size: 22rpx;
+}
+.page-body{
+    margin: 10rpx
+}
+.flex-wrp {
+  margin-top: 0rpx;
+  display: flex;
+}

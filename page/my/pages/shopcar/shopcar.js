@@ -1,9 +1,7 @@
 Page({
     data: {
         shopdata: [
-            { id: 1, name: '饭包', memo: '', saucetype: '鸡蛋酱+豆瓣酱', imageUrl: '../../../../image/fb.jpg', price: 6 },
-            { id: 2, name: '饭包', memo: '', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 },
-            { id: 3, name: '冷面', memo: '加烤肠', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 }
+            { id: 1, name: '饭包', memo: '', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 }
         ],
         flavortype: [
             { name: '葱', flavortype: '1', ischeck: false },
@@ -95,7 +93,7 @@ Page({
         let length = this.data.shopdata.length;
         console.log('length值为：', length)
         this.data.shopdata.splice(length + 1, 0,
-            { id: '', name: '饭包', memo: '', imageUrl: '../../../../image/fb.jpg' });
+            { id: '', name: '饭包', memo: '', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6});
         this.setData(
             { shopdata: this.data.shopdata }
         )
@@ -128,7 +126,7 @@ Page({
         let str = '';
         let amount = 0;
         for (var i = 0; i < this.data.shopdata.length; i++) {
-            str += this.data.shopdata[i].name + "  配料：" + this.data.shopdata[i].memo+"  口味：" + this.data.shopdata[i].saucetype;
+            str += this.data.shopdata[i].name + "  配料：" + this.data.shopdata[i].memo + "  口味：" + this.data.shopdata[i].saucetype;
             amount += this.data.shopdata[i].price;
         }
 
@@ -136,11 +134,11 @@ Page({
 
         console.log('预定时间：' + this.data.time);
         console.log('备注：' + this.data.message);
+        var goData = { shopData: this.data.shopdata, time: this.data.time, memo: this.data.message };
 
 
-
-        wx.switchTab({
-            url: '/page/my/pages/myInfo/myInfo'
+        wx.navigateTo({
+            url: '/page/my/pages/orderInfo/orderInfo?shop_info='+JSON.stringify(goData)
         })
 
     }

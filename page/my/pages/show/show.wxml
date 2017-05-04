@@ -3,11 +3,11 @@
   <view class="flex-wrp" style="flex-direction:column;">
     <view class="flex-item flex-item-1" style="background-size: contain;background: #00FF00 url(../../../../image/fb.jpg) no-repeat fixed top"></view>
     <view class="flex-item flex-item-2" style="margin-top:20rpx;">
-    饭包是一种农家饭，大多数东北人都喜欢吃。做法也是大同小异。先把洗净的大白菜叶平铺开来，抹上酱，然后把撕碎的葱、香菜和土豆块或者土豆酱撒在上面，如果口重还可以再加点酱，最后把米饭最好是二米饭（小米和大米）铺在上面，包起来就可以吃了。有些人喜欢用熟酱，还喜欢在里面加一些别的蔬菜，如黄瓜丝儿等，各人有各人的喜好。吃在嘴里，清清爽爽，未加工的蔬菜的味道、大酱的醇香和米饭香混合在一起，让人齿夹生津，甚至在吃完之后，闻一闻手指间留下的味道，都让人回味无穷。
+   {{text}}
     
    </view>
     <view class="flex-item flex-item-3" >
-    <button type="primary">预订按钮</button>
+    <button type="primary"  bindtap="bindSubmit">预订按钮</button>
     </view>
   </view>
  </view>

@@ -1,0 +1,39 @@
+<view class="container">
+  <view class="page-body">
+    <view>
+      <label>预定信息 | </label>商品共计：
+      <label style="color:red">{{shopinfo.length}}</label>；金额为：
+      <label style="color:red">{{shopamount}}</label>
+      <view class="flex-wrp" wx:for="{{shopinfo}}">
+        <label style="width:130rpx"> {{index+1+'.'}}{{item.name}}—</label>
+        <view style="width:100%">
+          <block wx:if="{{item.memo.length>0}}">
+            配料：{{item.memo}}； </block>
+          <block wx:else>
+            配料：正常；
+          </block>
+          <block wx:if="{{item.saucetype.length>0}}">
+            口味：{{item.saucetype}}
+          </block>
+          <block wx:else>
+            口味：正常
+          </block>
+        </view>
+      </view>
+    </view>
+    <view>
+      <label>预定时间 | </label>{{time}}</view>
+    <view>
+      <label>卖家留言 | </label>
+      <block wx:if="{{memo.length>0}}">
+        {{memo}}
+      </block>
+      <block wx:else>
+        无
+      </block>
+    </view>
+    <view class="btn">
+      <button style="width:50%" type="primary" bindtap="bindUrl">查看订单</button>
+    </view>
+  </view>
+</view>

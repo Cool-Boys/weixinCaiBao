@@ -1,9 +1,13 @@
 Page({
   data: {
+    shopinfo: '1',
+    time: '2',
+    memo: '1',
     message: '列表渲染',
     array: [1, 2, 3, 4, 5],
     message1: '条件渲染',
     view: 'MINA',
+
     reurnData: '没有数据',
     staffA: { firstName: 'Hulk', lastName: 'Hu' },
     staffB: { firstName: 'Shang', lastName: 'You' },
@@ -26,17 +30,17 @@ Page({
     autoplay: false,
     interval: 5000,
     duration: 1000,
-    hidden:false,
-    nocancel:false
+    hidden: false,
+    nocancel: false
 
 
 
   },
-  changeHidden: function(){
-        this.setData({
-            hidden: !this.data.hidden
-        });
-    },
+  changeHidden: function () {
+    this.setData({
+      hidden: !this.data.hidden
+    });
+  },
   onLoad: function (options) {
     // 生命周期函数--监听页面加载
     console.log('onload');
@@ -141,25 +145,31 @@ Page({
     })
 
   },
-    cancel: function(){
-        this.setData({
-             hidden: true
-        });
-    },
-    confirm: function(){
-        this.setData({
-             nocancel: !this.data.nocancel
-        });    
-        console.log("clicked confirm");
-    } 
-    ,open: function(){
-        console.log("延时调用");
-    },
-    close: function(){
-        this.setData({
-            hidden:true
+  cancel: function () {
+    this.setData({
+      hidden: true
     });
-        console.log("关闭弹框");
-    }
+  },
+  confirm: function () {
+    this.setData({
+      nocancel: !this.data.nocancel
+    });
+    console.log("clicked confirm");
+  }
+  , open: function () {
+    console.log("延时调用");
+  },
+  close: function () {
+    this.setData({
+      hidden: true
+    });
+    console.log("关闭弹框");
+  },
+  bindUrl:function(){
+
+    wx.switchTab({
+  url: '/page/my/pages/myInfo/myInfo'
+})
+  }
 
 })

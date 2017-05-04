@@ -2,18 +2,12 @@
   background-color: #9df88f;
   color: #000;
   padding: 10rpx;
+  font-size: 22rpx;
 }
 
 .flex-wrp {
   margin-top: 0rpx;
   display: flex;
- 
-}
-
-.flex-wrp-tips {
-  margin-top: 0rpx;
-  padding-left: 20rpx;
-  /*浮动向左*/
 }
 
 .flex-item {
@@ -22,31 +16,58 @@
   padding: 0rpx;
 }
 
+/*列表样式*/
+
 .flex-item-text {
   margin-left: 20rpx;
   width: 100%;
 }
 
 .flex-item-text>input {
-  border: 1rpx solid #000;
+  border: 1rpx dashed #000;
   padding: 0px;
-  border-left-width:0px;border-top-width:0px;border-right-width:0px;
-  font-size: 22rpx;
+  border-left-width: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
 }
-.flex-item-label{
+
+.flex-item-label {
   background: #9df88f;
- 
-
   font-size: 25rpx;
-
 }
-
 
 .flex-item-image {
   margin-left: 20rpx;
   width: 120rpx;
   height: 120rpx;
 }
+
+/*调料区样式*/
+
+.flex-wrp-tips {
+  margin-top: 0rpx;
+  padding-left: 20rpx;
+  font-size: 25rpx;
+  background: #fff;
+  height: 300rpx;
+}
+
+.flex-wrp-tips-item {
+  display: flex;
+  flex-direction: row;
+}
+.flex-wrp-tips-item-j{
+  margin-top: 10rpx;
+ text-align: center;
+ background: #9df88f;
+  padding-right: 100rpx;
+}
+.flex-wrp-tips-item-left {
+  width: 15%;
+  text-align: center;
+}
+
+
 
 .btn {
   clear: both;
