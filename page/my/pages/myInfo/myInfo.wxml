@@ -1,53 +1,43 @@
-<!--主盒子-->  
-<view class="container">  
-  <!--左侧栏-->  
-  <view class="nav_left">  
-    <block wx:for="{{navLeftItems}}">  
-      <!--当前项的id等于item项的id，那个就是当前状态-->  
-      <!--用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开2级页面使用-->  
-      <view class="nav_left_items {{curNav == item.id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">{{item.tree.desc}}</view>  
-    </block>  
-  </view>  
-  <!--右侧栏-->  
-  <view class="nav_right">  
-    <!--如果有数据，才遍历项-->  
-    <view wx:if="{{navRightItems[curIndex].tree.nodes[1].tree.nodes}}">  
-      <block wx:for="{{navRightItems[curIndex].tree.nodes[1].tree.nodes}}">  
-        <view class="nav_right_items">  
-          <navigator url="../list/index?brand={{item.tree.id}}&typeid={{navRightItems[curIndex].id}}">  
-            <!--用view包裹图片组合，如果有图片就用，无图片提供就使用50x30的这个默认图片-->  
-            <view>                
-              <block wx:if="{{item.tree.logo}}">  
-                <image src="{{item.tree.logo}}"></image>  
-              </block>  
-              <block wx:else>  
-                <image src="http://temp.im/50x30"></image>  
-              </block>  
-            </view>  
-            <!--如果有文字，就用文字；无文字就用其他-->  
-            <view wx:if="{{item.tree.desc}}">  
-              <text>{{item.tree.desc}}</text>  
-            </view>  
-            <view wx:else>  
-              <text>{{item.tree.desc2}}</text>  
-            </view>  
-          </navigator>  
-        </view>  
-      </block>  
-    </view>  
-    <!--如果无数据，则显示数据-->  
-    <view wx:else>暂无数据</view>  
-  </view>  
-</view>  
-
-<div class="weui_cells_title">带说明的列表项</div>
-<div class="weui_cells">
-    <div class="weui_cell">
-        <div class="weui_cell_bd weui_cell_primary">
-            <p>标题文字</p>
-        </div>
-        <div class="weui_cell_ft">
-            说明文字
-        </div>
-    </div>
-</div>
+<view class="container">
+  <view class="page-body">
+    <view class="item">订单状态：已接单</view>
+    <view  class="item2">
+      <label>预定信息：</label>商品共计：
+      <label style="color:red">{{shopinfo.length}}</label>；金额为：
+      <label style="color:red">{{shopamount}}</label>
+      <view class="flex-wrp" wx:for="{{shopinfo}}">
+        <label style="width:120rpx"> {{index+1+'.'}}{{item.name}}—</label>
+        <view >
+          <block wx:if="{{item.memo.length>0}}" >
+           <view style="flex-direction:row;"> 配料：{{item.memo}}；</view> </block>
+          <block wx:else>
+            配料：正常；
+          </block>
+          <block wx:if="{{item.saucetype.length>0}}">
+             <view style="flex-direction:row;"> 口味：{{item.saucetype}}</view>
+          </block>
+          <block wx:else>
+            口味：正常
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class="item">
+      <label>预定时间：</label>{{time}}</view>
+    <view class="item">
+      <label>卖家留言：</label>
+      <block wx:if="{{memo.length>0}}">
+        {{memo}}
+      </block>
+      <block wx:else>
+        无
+      </block>
+    </view>
+    <view class="line"></view>
+    <view class="item" >
+      <label>订单号：20170506-00001</label>
+      
+    </view>
+  
+  </view>
+</view>

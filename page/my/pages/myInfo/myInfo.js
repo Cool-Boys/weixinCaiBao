@@ -2,7 +2,13 @@ Page({
     data: {  
         navLeftItems: [],  
         navRightItems: [],  
-        curNav: 1,  
+        curNav: 1, 
+        shopinfo: [
+            { id: 1, name: '饭包', memo: '多放葱 多放香菜 多放黄瓜丝 多放土豆丝', saucetype: '辣酱+豆瓣酱+鸡蛋酱', imageUrl: '../../../../image/fb.jpg', price: 6 }
+        ], 
+        shopamount:6,
+         time: '12:01',
+        message: '',
         curIndex: 0  
     },  
     onLoad: function() {  

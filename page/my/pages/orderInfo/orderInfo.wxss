@@ -1,13 +1,23 @@
 .container {
   background-color: #9df88f;
-  color: #A0A0A0;
+  color: #a0a0a0;
   padding: 10rpx;
   font-size: 22rpx;
 }
-.page-body{
-    margin: 10rpx
+
+.page-body {
+  background: #fff;
+  
 }
+
 .flex-wrp {
   margin-top: 0rpx;
   display: flex;
+  
+}
+
+.line {
+  width: 98%;
+ padding-left: 20rpx;padding-right:20px;
+  border: 0.5rpx dashed #000;
 }

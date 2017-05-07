@@ -15,7 +15,6 @@ new Page({
     let str = '';
     let amount = 0;
     for (var i = 0; i < shopdata.length; i++) {
-      str += shopdata[i].name + "  配料：" + shopdata[i].memo + "  口味：" + shopdata[i].saucetype;
       amount += shopdata[i].price;
     }
 
