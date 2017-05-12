@@ -6,7 +6,7 @@
    {{text}}
     
    </view>
-    <view class="flex-item flex-item-3" >
+    <view class="footer">
     <button type="primary"  bindtap="bindSubmit">预订按钮</button>
     </view>
   </view>

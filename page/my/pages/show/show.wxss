@@ -23,14 +23,24 @@
 .flex-item-2 {
   margin: 0 auto;
   width: 90%;
-  height: 710rpx;
+  height: 550rpx;
   padding-left: 20rpx;
   padding-right: 20rpx;
  
 }
 
-.flex-item-3 {
-  margin: 0 auto;
+
+.footer {
+  /*position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  
+  background-color: yellow;*/
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 9999;
 }

@@ -5,7 +5,7 @@
     </view>
 
     <!-- 商品区-->
-    <view style="background:#fff">
+    <view >
       <block wx:if="{{shopdata.length>0}}">
         <view wx:for="{{shopdata}}" class="flex-wrp" style="flex-direction:row;">
           <view class="flex-item">
@@ -20,15 +20,15 @@
             <view class="flex-item flex-item-label" style="width:100rpx;">
               <lable class="flex-item-label">同上</lable>
             </view>
-            <view class="flex-item " style="width:100rpx;">
+            <view class="flex-item " style="width:100rpx">
               <lable class="flex-item-label" bindtap="deletedata" data-index="{{index}}">删除</lable>
             </view>
           </block>
           <block wx:else>
-            <view class="flex-item " style="width:100rpx;">
+            <view class="flex-item " style="width:150rpx;text-align:center">
               <lable class="flex-item-label" bindtap="deletedata" data-index="{{index}}">删除</lable>
             </view>
-            <view class="flex-item " style="width:100rpx;"></view>
+            <view class="flex-item " style="width:50rpx;"></view>
           </block>
           <!--end-->
         </view>
@@ -37,20 +37,20 @@
         <view>空空如也</view>
       </block>
     </view>
-
+<view class="line"></view>
     
     <view class="flex-wrp-tips" >
     <!-- 调料区-->
       <view class="flex-wrp-tips-item" wx:for="{{flavortype}}">
         <label class="flex-wrp-tips-item-left">{{item.name}}</label>
         <radio-group class="radio-group" bindchange="radioChange" data-text="{{item.name}}" data-index="{{index}}">
-          <label class="radio" style="width:30%;height:55rpx;background:#D2D2D2;color:#fff;margin:10rpx;">
+          <label class="radio" style="width:30%;height:55rpx;text-size:10rpx;margin:10rpx;">
             <radio value="多放{{item.name}}" checked="{{item.ischeck}}" />多放
           </label>
-          <label class="radio" style="width:30%;height:55rpx; background:#D2D2D2;color:#fff;margin:10rpx;">
+          <label class="radio" style="width:30%;height:55rpx; margin:10rpx;">
             <radio value="少放{{item.name}}" checked="{{item.ischeck}}" />少放
           </label>
-          <label class="radio" style="width:30%;height:55rpx; background:#D2D2D2;color:#fff;margin:10rpx;">
+          <label class="radio" style="width:30%;height:55rpx; margin:10rpx;">
             <radio value="不放{{item.name}}" checked="{{item.ischeck}}" />不放
           </label>
         </radio-group>
@@ -65,7 +65,7 @@
         </checkbox-group>
       </view>
     </view>
-    <view class="flex-wrp" style="background:#fff">
+    <view class="flex-wrp" >
       <view class="flex-item" style="flex:1">
         <text>预定时间:</text>
       </view>
@@ -77,15 +77,16 @@
         </picker>
       </view>
     </view>
-    <view class="flex-wrp" style="background:#fff">
+    <view class="flex-wrp" >
       <view class="flex-item" style="flex:1">
-        <text>嘱咐卖家:</text>
+        <text >备注信息:</text>
       </view>
       <view class="flex-item flex-item-text" style="flex:5">
         <input bindinput="bindMessageInput" />
       </view>
     </view>
-    <view class="btn">
+    <view class="line" style="margin-bottom:150rpx"></view>
+    <view class="footer">
       <button type="primary" bindtap="bindSubmit">提交</button>
     </view>
   </view>

@@ -97,7 +97,7 @@
         "text": "我的"
       },
       {
-        "pagePath": "page/my/pages/index/index",
+        "pagePath": "page/component/index",
         "iconPath": "image/icon_component.png",
         "selectedIconPath": "image/icon_component_HL.png",
         "text": "测试"

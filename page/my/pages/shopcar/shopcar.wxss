@@ -1,7 +1,8 @@
 .container {
   background-color: #9df88f;
   color: #000;
-  padding: 10rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
   font-size: 22rpx;
 }
 
@@ -48,27 +49,53 @@
   margin-top: 0rpx;
   padding-left: 20rpx;
   font-size: 25rpx;
-  background: #fff;
-  height: 300rpx;
+  height: 400rpx;
 }
 
 .flex-wrp-tips-item {
   display: flex;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
   flex-direction: row;
 }
-.flex-wrp-tips-item-j{
-  margin-top: 10rpx;
- text-align: center;
- background: #9df88f;
+
+.flex-wrp-tips-item-j {
+  border: 1rpx solid #1aad19;
+  padding: 10rpx;
+  margin-top: 20rpx;
+  text-align: center;
+  background: #9df88f;
   padding-right: 100rpx;
 }
+
 .flex-wrp-tips-item-left {
   width: 15%;
   text-align: center;
 }
 
-
+.line {
+  margin-bottom: 15rpx;
+  margin-top: 15rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border: 1rpx solid #1aad19;
+}
 
 .btn {
   clear: both;
+}
+
+.footer {
+  /*position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: yellow;*/
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 9999;
 }

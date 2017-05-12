@@ -8,7 +8,7 @@
 var host = "14592619.qcloud.la"
 
 var config = {
-
+  
     // 下面的地址配合云端 Server 工作
     host,
 

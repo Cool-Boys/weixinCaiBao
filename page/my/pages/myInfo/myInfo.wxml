@@ -1,43 +1,46 @@
 <view class="container">
   <view class="page-body">
-    <view class="item">订单状态：已接单</view>
-    <view  class="item2">
-      <label>预定信息：</label>商品共计：
-      <label style="color:red">{{shopinfo.length}}</label>；金额为：
-      <label style="color:red">{{shopamount}}</label>
-      <view class="flex-wrp" wx:for="{{shopinfo}}">
-        <label style="width:120rpx"> {{index+1+'.'}}{{item.name}}—</label>
-        <view >
-          <block wx:if="{{item.memo.length>0}}" >
-           <view style="flex-direction:row;"> 配料：{{item.memo}}；</view> </block>
-          <block wx:else>
-            配料：正常；
-          </block>
-          <block wx:if="{{item.saucetype.length>0}}">
-             <view style="flex-direction:row;"> 口味：{{item.saucetype}}</view>
-          </block>
-          <block wx:else>
-            口味：正常
-          </block>
+    <block wx:for="{{orderdata}}" wx:for-item="itemName">
+      <view class="item">
+        <label class="item-1">订单号：{{itemName.orderNo}}</label>
+        <label>订单状态：{{itemName.orderState}}</label>
+      </view>
+
+      <view class="item2">
+        <label>预定信息：</label>商品共计：
+        <label style="color:red">{{itemName.shopinfo.length}}</label>；金额为：
+        <label style="color:red">{{itemName.shopamount}}</label>
+        <view class="flex-wrp" wx:for="{{itemName.shopinfo}}">
+          <label style="width:120rpx"> {{index+1+'.'}}{{item.name}}—</label>
+          <view>
+            <block wx:if="{{item.memo.length>0}}">
+              <view style="flex-direction:row;"> 配料：{{item.memo}}；</view>
+            </block>
+            <block wx:else>
+              配料：正常；
+            </block>
+            <block wx:if="{{item.saucetype.length>0}}">
+              <view style="flex-direction:row;"> 口味：{{item.saucetype}}</view>
+            </block>
+            <block wx:else>
+              口味：正常
+            </block>
+          </view>
         </view>
       </view>
-    </view>
-    <view class="item">
-      <label>预定时间：</label>{{time}}</view>
-    <view class="item">
-      <label>卖家留言：</label>
-      <block wx:if="{{memo.length>0}}">
-        {{memo}}
-      </block>
-      <block wx:else>
-        无
-      </block>
-    </view>
-    <view class="line"></view>
-    <view class="item" >
-      <label>订单号：20170506-00001</label>
-      
-    </view>
-  
+      <view class="item">
+        <label>预定时间：</label>{{itemName.time}}</view>
+      <view class="item">
+        <label>卖家留言：</label>
+        <block wx:if="{{itemName.memo.length>0}}">
+          {{itemName.memo}}
+        </block>
+        <block wx:else>
+          无
+        </block>
+      </view>
+      <view class="line"></view>
+    </block>
+
   </view>
 </view>
