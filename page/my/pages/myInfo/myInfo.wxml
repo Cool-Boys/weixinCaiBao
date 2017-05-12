@@ -30,15 +30,21 @@
       </view>
       <view class="item">
         <label>预定时间：</label>{{itemName.time}}</view>
-      <view class="item">
-        <label>卖家留言：</label>
-        <block wx:if="{{itemName.memo.length>0}}">
-          {{itemName.memo}}
-        </block>
-        <block wx:else>
-          无
-        </block>
-      </view>
+      <block wx:if="{{itemName.message.length>0}}">
+        <view class="item" style="height:200rpx">
+          <label>卖家留言：</label>
+
+          <view>{{itemName.message}}</view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="item">
+          <label>卖家留言：无</label>
+
+         
+        </view>
+      </block>
+
       <view class="line"></view>
     </block>
 

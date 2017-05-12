@@ -1,9 +1,9 @@
 .container {
-  background-color: #9df88f;
-  color: #000;
+  background-color: #E4E4E4;
+  color: #17811C;
   padding-left: 10rpx;
   padding-right: 10rpx;
-  font-size: 22rpx;
+  font-size: 26rpx;
 }
 
 .flex-wrp {
@@ -84,7 +84,20 @@
 .btn {
   clear: both;
 }
-
+.top {
+  /*position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: yellow;*/
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 9999;
+}
 .footer {
   /*position: absolute;
   bottom: 0;

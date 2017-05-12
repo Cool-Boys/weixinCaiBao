@@ -1,10 +1,10 @@
 .container {
-   background-color: #9df88f;
-  color: #fff;
+   background-color: #E4E4E4;
+  color: #17811C;
   padding-top: 1rpx;
   padding-left: 10rpx;
   padding-right: 10rpx;
-  font-size: 22rpx;
+  font-size: 25rpx;
 }
 
 .page-body {
@@ -24,7 +24,7 @@
   line-height: 60rpx;
   overflow: hidden;
   height: 60rpx;
-  background-color: #1F9D3E;
+  background-color: #EFEFEF;
   margin-bottom: 2rpx;
   margin-top: 2rpx;
 }
@@ -37,14 +37,14 @@
   padding-bottom: 20rpx;
   padding-top: 20rpx;
   padding-left: 20rpx;
-  background-color: #71B481;
+  background-color: #EFEFEF;
   margin-bottom: 1rpx;
 }
 
 .line {
- margin-bottom: 5rpx;
-  margin-top: 5rpx;
+ margin-bottom: 10rpx;
+  margin-top: 10rpx;
   padding-left: 20rpx;
   padding-right: 20px;
-  border: 1rpx solid #1aad19;
+  border: 1rpx solid #ABABAB;
 }

@@ -1,6 +1,6 @@
 .container {
-  background-color: #9df88f;
-  color: #000;
+  background-color: #E4E4E4;
+  color: #646464;
 }
 
 .flex-wrp {

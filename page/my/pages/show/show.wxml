@@ -7,7 +7,7 @@
     
    </view>
     <view class="footer">
-    <button type="primary"  bindtap="bindSubmit">预订按钮</button>
+    <button type="primary"  bindtap="bindSubmit">预订</button>
     </view>
   </view>
  </view>

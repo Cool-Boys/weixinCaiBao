@@ -1,11 +1,11 @@
 <view class="container">
   <view class="page-body">
-    <view>
-      <button type="primary" bindtap="adddata">增加一个</button>
+    <view class="top">
+      <button type="primary" style="background:#B2B2B2" bindtap="adddata">再整一个</button>
     </view>
 
     <!-- 商品区-->
-    <view >
+    <view style="margin-top:130rpx">
       <block wx:if="{{shopdata.length>0}}">
         <view wx:for="{{shopdata}}" class="flex-wrp" style="flex-direction:row;">
           <view class="flex-item">
@@ -37,10 +37,10 @@
         <view>空空如也</view>
       </block>
     </view>
-<view class="line"></view>
-    
-    <view class="flex-wrp-tips" >
-    <!-- 调料区-->
+    <view class="line"></view>
+
+    <view class="flex-wrp-tips">
+      <!-- 调料区-->
       <view class="flex-wrp-tips-item" wx:for="{{flavortype}}">
         <label class="flex-wrp-tips-item-left">{{item.name}}</label>
         <radio-group class="radio-group" bindchange="radioChange" data-text="{{item.name}}" data-index="{{index}}">
@@ -60,12 +60,12 @@
       <view class="flex-wrp-tips-item-j">
         <checkbox-group bindchange="checkboxChange">
           <label class="checkbox" wx:for="{{saucetype}}">
-            <checkbox value="{{item.name}}" checked="{{item.ischeck}}" />{{item.name}}
+            <checkbox style="margin-left:30rpx" value="{{item.name}}" checked="{{item.ischeck}}" />{{item.name}}
           </label>
         </checkbox-group>
       </view>
     </view>
-    <view class="flex-wrp" >
+    <view class="flex-wrp">
       <view class="flex-item" style="flex:1">
         <text>预定时间:</text>
       </view>
@@ -77,9 +77,9 @@
         </picker>
       </view>
     </view>
-    <view class="flex-wrp" >
+    <view class="flex-wrp">
       <view class="flex-item" style="flex:1">
-        <text >备注信息:</text>
+        <text>备注信息:</text>
       </view>
       <view class="flex-item flex-item-text" style="flex:5">
         <input bindinput="bindMessageInput" />

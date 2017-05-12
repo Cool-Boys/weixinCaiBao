@@ -1,12 +1,14 @@
 .container {
-  background-color: #9df88f;
-  color: #a0a0a0;
-  padding: 10rpx;
-  font-size: 22rpx;
+  background-color: #E4E4E4;
+  color: #17811C;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  font-size: 26rpx;
 }
 
 .page-body {
-  background: #fff;
+  padding-top: 10rpx;
+ 
   
 }
 
@@ -16,8 +18,32 @@
   
 }
 
+.item {
+  padding-left: 20rpx;
+  line-height: 60rpx;
+  overflow: hidden;
+  height: 60rpx;
+  background-color: #EFEFEF;
+  margin-bottom: 2rpx;
+  margin-top: 2rpx;
+}
+
+.item-1 {
+  margin-right: 20rpx;
+}
+
+.item2 {
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+  padding-left: 20rpx;
+  background-color: #EFEFEF;
+  margin-bottom: 1rpx;
+}
+
 .line {
-  width: 98%;
- padding-left: 20rpx;padding-right:20px;
-  border: 0.5rpx dashed #000;
+ margin-bottom: 10rpx;
+  margin-top: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20px;
+  border: 1rpx solid #ABABAB;
 }
