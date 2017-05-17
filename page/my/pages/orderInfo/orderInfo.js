@@ -69,5 +69,16 @@ new Page({
     wx.switchTab({
       url: '/page/my/pages/myInfo/myInfo'
     })
+  },
+  bindReturn:function(){
+    wx.switchTab({
+      url: '/page/my/pages/shopcar/shopcar'
+    })
+  },
+  callLongmei:function(e){
+    let phoneno = e.target.dataset.no
+    wx.makePhoneCall({
+      phoneNumber: phoneno //仅为示例，并非真实的电话号码
+    })
   }
 })

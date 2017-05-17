@@ -1,14 +1,28 @@
 <view class="container">
- <view class="page-body">
-  <view class="flex-wrp" style="flex-direction:column;">
-    <view class="flex-item flex-item-1" style="background-size: contain;background: #00FF00 url(../../../../image/fb.jpg) no-repeat fixed top"></view>
-    <view class="flex-item flex-item-2" style="margin-top:20rpx;">
-   {{text}}
-    
-   </view>
-    <view class="footer">
-    <button type="primary"  bindtap="bindSubmit">预订</button>
+  <view class="page-body">
+    <!--左侧栏-->
+    <view class="nav_left">
+      <block wx:for="{{shopdata}}">
+        <view class="nav_left_items {{curNav == item.id ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="switchRightTab" >{{item.name}}</view>
+      </block>
     </view>
+    <view class="nav_right">
+      <!--如果有数据，才遍历项-->
+      <view wx:if="{{shopdata.length>0}}">
+        <view class="flex-wrp" style="flex-direction:column;">
+          <!--<view class="flex-item flex-item-1" style="background-size: contain;background: #00FF00 url({{shopdata[curIndex].imageurl}}) no-repeat fixed top"></view>-->
+          <image  class="flex-item flex-item-1"  src="{{shopdata[curIndex].imageurl}}"></image>
+          <view class="flex-item flex-item-2" style="margin-top:20rpx;">
+           <view> {{shopdata[curIndex].text}}</view>
+          </view>
+        </view>
+        <view class="footer">
+          <button type="primary" bindtap="bindSubmit">预订</button>
+        </view>
+      </view>
+      <!--如果无数据，则显示数据-->
+      <view wx:else>暂无数据</view>
+    </view>
+
   </view>
- </view>
 </view>

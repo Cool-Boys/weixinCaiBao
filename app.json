@@ -80,20 +80,20 @@
     "list": [
       {
         "pagePath": "page/my/pages/show/show",
-        "iconPath": "image/icon_API.png",
-        "selectedIconPath": "image/icon_API_HL.png",
+        "iconPath": "image/icon_component.png",
+        "selectedIconPath": "image/icon_component_HL.png",
         "text": "首页"
       },
       {
         "pagePath": "page/my/pages/shopcar/shopcar",
-        "iconPath": "image/icon_API.png",
-        "selectedIconPath": "image/icon_API_HL.png",
+        "iconPath": "image/mcart.png",
+        "selectedIconPath": "image/mselcart.png",
         "text": "购物车"
       },
       {
         "pagePath": "page/my/pages/myInfo/myInfo",
-        "iconPath": "image/icon_API.png",
-        "selectedIconPath": "image/icon_API_HL.png",
+        "iconPath": "image/my.png",
+        "selectedIconPath": "image/selmy1.png",
         "text": "我的"
       }
      

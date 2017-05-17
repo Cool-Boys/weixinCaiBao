@@ -1,6 +1,56 @@
 .container {
-  background-color: #E4E4E4;
+  background-color: #e4e4e4;
   color: #646464;
+}
+
+/*左侧栏主盒子*/
+
+.nav_left {
+  /*设置行内块级元素（没使用定位）*/
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  /*主盒子设置背景色为灰色*/
+  background: #f5f5f5;
+  text-align: center;
+}
+
+/*左侧栏list的item*/
+
+.nav_left .nav_left_items {
+  /*每个高30px*/
+  height: 30px;
+  /*垂直居中*/
+  line-height: 30px;
+  /*再设上下padding增加高度，总高42px*/
+  padding: 6px 0;
+  /*只设下边线*/
+  border-bottom: 1px solid #dedede;
+  /*文字14px*/
+  font-size: 14px;
+}
+
+/*左侧栏list的item被选中时*/
+
+.nav_left .nav_left_items.active {
+  /*背景色变成白色*/
+  background: #fff;
+}
+
+/*右侧栏主盒子*/
+
+.nav_right {
+  /*右侧盒子使用了绝对定位*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  flex: 1;
+  /*宽度75%，高度占满，并使用百分比布局*/
+  width: 80%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #fff;
 }
 
 .flex-wrp {
@@ -22,13 +72,18 @@
 
 .flex-item-2 {
   margin: 0 auto;
-  width: 90%;
+  width: 98%;
   height: 550rpx;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
- 
 }
 
+.flex-item-2 view:first-letter {
+  float: left;
+  font-size: 3em;
+  color:#1AAD19;
+  line-height: 1;
+  font-weight: bold;
+  margin-right: 0.2em;
+}
 
 .footer {
   /*position: absolute;
@@ -43,4 +98,5 @@
   padding: 0;
   margin: 0;
   z-index: 9999;
+  background-color: #e4e4e4;
 }

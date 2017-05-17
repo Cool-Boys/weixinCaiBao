@@ -23,23 +23,26 @@ Page({
     let id = e.target.dataset.id,
       index = parseInt(e.target.dataset.index);
     console.log('id' + id + '  index:' + index);
-
-    var tt = [
-      { name: '鸡蛋酱', ischeck: false }, { name: '豆瓣酱', ischeck: false }, { name: '辣酱', ischeck: false }]
-    var dd = [
-      { name: '葱', flavortype: '1', ischeck: false },
-      { name: '青椒', flavortype: '2', ischeck: false },
-      { name: '香菜', flavortype: '3', ischeck: false },
-      { name: '土豆丝', flavortype: '4', ischeck: false },
-      { name: '黄瓜丝', flavortype: '5', ischeck: false }
-    ]
-    // 把点击到的某一项，设为当前index  
-    // 把点击到的某一项，设为当前index  
+    if (this.data.curNav != id) {
+      var tt = [
+        { name: '鸡蛋酱', ischeck: false }, { name: '豆瓣酱', ischeck: false }, { name: '辣酱', ischeck: false }]
+      var dd = [
+        { name: '葱', flavortype: '1', ischeck: false },
+        { name: '青椒', flavortype: '2', ischeck: false },
+        { name: '香菜', flavortype: '3', ischeck: false },
+        { name: '土豆丝', flavortype: '4', ischeck: false },
+        { name: '黄瓜丝', flavortype: '5', ischeck: false }
+      ]
+      // 把点击到的某一项，设为当前index  
+      // 把点击到的某一项，设为当前index  
+      this.setData({
+        saucetype: tt,
+        flavortype: dd
+      })
+    }
     this.setData({
       curNav: id,
-      curIndex: index,
-      saucetype: tt,
-      flavortype: dd
+      curIndex: index
     })
   },
 
@@ -88,6 +91,25 @@ Page({
       { shopdata: this.data.shopdata }
     )
   },
+  copydata: function (e) {
+    let index = e.target.dataset.index;
+    var temp = this.data.shopdata[index];
+
+    for (var i = index - 1; i >= 0; i--) {
+      var temp2 = this.data.shopdata[i];
+      if (temp2.memo != "" || temp2.saucetype != "") {
+        this.data.shopdata[index].memo = temp2.memo;
+        this.data.shopdata[index].saucetype = temp2.saucetype;
+      }
+     break;
+    }
+
+    this.setData(
+      { shopdata: this.data.shopdata }
+    )
+  },
+
+
   adddata: function (e) {
     let index = this.data.curIndex;
     let length = this.data.shopdata.length;

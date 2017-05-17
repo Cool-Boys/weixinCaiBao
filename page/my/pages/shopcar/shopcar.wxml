@@ -1,7 +1,7 @@
 <view class="container">
   <view class="page-body">
     <view class="top">
-      <button type="primary" style="background:#B2B2B2" bindtap="adddata">再整一个</button>
+      <button type="primary" style="background:#B2B2B2; margin-bottom:0;" bindtap="adddata">再整一个</button>
     </view>
 
     <!-- 商品区-->
@@ -17,16 +17,23 @@
           </view>
           <!--一套-->
           <block wx:if="{{index>0}}">
-            <view class="flex-item flex-item-label" style="width:100rpx;">
-              <lable class="flex-item-label">同上</lable>
+            <view class="flex-item" style="width:80rpx;">
+              <lable class="flex-item-label" style="text-align:center">
+                <image src="../../../../image/icon_pencil-edit.png" bindtap="copydata" data-index="{{index}}" style="width:32rpx;height:32rpx"></image>
+              </lable>
             </view>
             <view class="flex-item " style="width:100rpx">
-              <lable class="flex-item-label" bindtap="deletedata" data-index="{{index}}">删除</lable>
+              <lable class="flex-item-label" >
+                <image src="../../../../image/mtrash.png" bindtap="deletedata" data-index="{{index}}" style="width:32rpx;height:32rpx"></image>
+              </lable>
             </view>
           </block>
           <block wx:else>
             <view class="flex-item " style="width:150rpx;text-align:center">
-              <lable class="flex-item-label" bindtap="deletedata" data-index="{{index}}">删除</lable>
+              <lable class="flex-item-label" >
+                <image src="../../../../image/mtrash.png" bindtap="deletedata" data-index="{{index}}" style="width:32rpx;height:32rpx"></image>
+              </lable>
+
             </view>
             <view class="flex-item " style="width:50rpx;"></view>
           </block>
