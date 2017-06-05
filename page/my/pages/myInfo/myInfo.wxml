@@ -1,5 +1,6 @@
 <view class="container">
   <view class="page-body">
+  <block wx:if="{{orderdata.length>0}}" >
     <block wx:for="{{orderdata}}" wx:for-item="itemName">
       <view class="item">
         <label class="item-1">订单号：{{itemName.orderNo}}</label>
@@ -10,20 +11,20 @@
         <label>预定信息：</label>商品共计：
         <label style="color:red">{{itemName.shopinfo.length}}</label>；金额为：
         <label style="color:red">{{itemName.shopamount}}</label>
-        <view class="flex-wrp" wx:for="{{itemName.shopinfo}}">
+        <view class="flex-wrp" wx:for="{{itemName.shopinfo}}" wx:for-item="item">
           <label style="width:120rpx"> {{index+1+'.'}}{{item.name}}—</label>
           <view>
             <block wx:if="{{item.memo.length>0}}">
               <view style="flex-direction:row;"> 配料：{{item.memo}}；</view>
             </block>
             <block wx:else>
-              配料：正常；
+               <view style="flex-direction:row;">配料：正常；</view>
             </block>
             <block wx:if="{{item.saucetype.length>0}}">
               <view style="flex-direction:row;"> 口味：{{item.saucetype}}</view>
             </block>
             <block wx:else>
-              口味：正常
+               <view style="flex-direction:row;">口味：正常</view>
             </block>
           </view>
         </view>
@@ -40,13 +41,17 @@
       <block wx:else>
         <view class="item">
           <label>卖家留言：无</label>
-
-         
         </view>
       </block>
 
       <view class="line"></view>
     </block>
-
+  </block>
+  <block wx:else>
+    <view >暂无数据</view>
+  </block>
   </view>
+  <view >
+    <loading wx:if="{{showLoading}}">加载中</loading>
+</view>
 </view>

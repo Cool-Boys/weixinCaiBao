@@ -1,14 +1,14 @@
 <view class="container">
   <view class="page-body">
-<block wx:if="{{1>2}}">
+<block wx:if="{{callstate==success}}">
 
 
     <view style="text-align:center">
       <image style="width:300rpx;height:300rpx" src="../../../../image/success.png"></image>
     </view>
     <view class="item">
-      <label class="item-1">订单号：2222</label>
-      <label>订单状态：待接收</label>
+      <label class="item-1">订单号：{{orderInfo.code}}</label>
+      <label>订单状态：{{orderInfo.flag==""?"订单已提交":"订单提交成功"}}</label>
     </view>
 
     <view class="item2">
@@ -34,19 +34,17 @@
       </view>
     </view>
     <view class="item">
-      <label>预定时间：</label>{{time}}</view>
-    <block wx:if="{{message.length>0}}">
+      <label>预定时间：</label>{{orderInfo.time}}</view>
+    <block wx:if="{{orderInfo.message.length>0}}">
       <view class="item" style="height:200rpx">
         <label>卖家留言：</label>
 
-        <view>{{message}}</view>
+        <view>{{orderInfo.message}}</view>
       </view>
     </block>
     <block wx:else>
       <view class="item">
         <label>卖家留言：无</label>
-
-
       </view>
     </block>
 

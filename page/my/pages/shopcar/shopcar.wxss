@@ -24,14 +24,12 @@
   width: 100%;
 }
 
-.flex-item-text>input {
-  border: 1rpx dashed #000;
-  padding: 0px;
-  border-left-width: 0px;
-  border-top-width: 0px;
-  border-right-width: 0px;
+.spview {
+  border-bottom: 1rpx dashed #000;
 }
-
+ .active {
+  background-color: #ADE5AD;
+}
 .flex-item-label {
   /*background: #9df88f;*/
   margin-left: 20rpx;
@@ -75,11 +73,12 @@
 }
 
 .line {
+ 
   margin-bottom: 15rpx;
   margin-top: 15rpx;
   padding-left: 20rpx;
   padding-right: 20rpx;
-  border: 1rpx solid #1aad19;
+  border-bottom: 1rpx solid #1aad19;
 }
 
 .btn {

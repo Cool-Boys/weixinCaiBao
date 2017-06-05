@@ -1,7 +1,9 @@
+const host = require('./../../../../config').host
+var util = require('./../../../../util/util.js')
 Page({
   data: {
     shopdata: [
-      { id: 1, name: '饭包', memo: '', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 }
+      { id: 1, name: '饭包', memo: '', saucetype: '', image: '../../../../image/fb.jpg', price: 6 }
     ],
     flavortype: [
       { name: '葱', flavortype: '1', ischeck: false },
@@ -16,14 +18,15 @@ Page({
     curNav: 1,
     curIndex: 0,
     time: '12:01',
-    message: ''
+    message: '',
+    showLoading: true
   },
   switchMemoInput: function (e) {
     // 获取item项的id，和数组的下标值  
     let id = e.target.dataset.id,
       index = parseInt(e.target.dataset.index);
     console.log('id' + id + '  index:' + index);
-    if (this.data.curNav != id) {
+    if (this.data.curIndex != index) {
       var tt = [
         { name: '鸡蛋酱', ischeck: false }, { name: '豆瓣酱', ischeck: false }, { name: '辣酱', ischeck: false }]
       var dd = [
@@ -34,14 +37,12 @@ Page({
         { name: '黄瓜丝', flavortype: '5', ischeck: false }
       ]
       // 把点击到的某一项，设为当前index  
-      // 把点击到的某一项，设为当前index  
       this.setData({
         saucetype: tt,
         flavortype: dd
       })
     }
     this.setData({
-      curNav: id,
       curIndex: index
     })
   },
@@ -50,6 +51,7 @@ Page({
     let text = e.detail.value;
     let index = e.target.dataset.index;
     let seltext = e.target.dataset.text;
+    // console.log("时间为：" + util.formatTime2(new Date));
     //获取备注信息
     let str = this.data.shopdata[this.data.curIndex].memo;
     let strArr = str.split(" ");
@@ -101,7 +103,7 @@ Page({
         this.data.shopdata[index].memo = temp2.memo;
         this.data.shopdata[index].saucetype = temp2.saucetype;
       }
-     break;
+      break;
     }
 
     this.setData(
@@ -115,7 +117,7 @@ Page({
     let length = this.data.shopdata.length;
     console.log('length值为：', length)
     this.data.shopdata.splice(length + 1, 0,
-      { id: '', name: '饭包', memo: '', saucetype: '', imageUrl: '../../../../image/fb.jpg', price: 6 });
+      { id: '', name: '饭包', memo: '', saucetype: '', image: '../../../../image/fb.jpg', price: 6 });
     this.setData(
       { shopdata: this.data.shopdata }
     )
@@ -131,6 +133,22 @@ Page({
     )
   },
   bindTimeChange: function (e) {
+
+//     let aa = util.convertTime(this.data.time,'21:01');
+//     if (aa){
+//       wx.showModal({
+//         title: '温馨提示',
+//         content: '预定日期超了！！！',
+//         showCancel: false,
+//         success: function (res) {
+//           if (res.confirm) {
+//             return;
+//           }
+//         }
+//       })
+
+// }
+
     this.setData({
       time: e.detail.value
     })
@@ -144,6 +162,24 @@ Page({
     )
   },
   bindSubmit: function () {
+
+    if (this.data.shopdata.length <= 0) {
+      wx.showModal({
+        title: '温馨提示',
+        content: '至少选择一个美食！！！',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            return;
+          }
+        }
+      })
+      return;
+    }
+
+
+
+
     console.log('商品共计：' + this.data.shopdata.length + '个');
     let str = '';
     let amount = 0;
@@ -158,10 +194,77 @@ Page({
     console.log('备注：' + this.data.message);
     var goData = { shopData: this.data.shopdata, time: this.data.time, memo: this.data.message };
 
+    var model = {};
+    model.info = JSON.stringify(this.data.shopdata);
+    model.message = this.data.message;
+    model.user_Id = getApp().globalData.userId;
+    model.time = this.data.time;
+    // this.setData(
+    //   { showLoading: true }
+    // )
+    wx.request({
+      url: host + '/TOrders/SaveDataForApp',
+      data: { data: JSON.stringify(model) },
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res)
+        // this.setData(
+        //   { showLoading: false }
+        // )
+        if (res.statusCode == "200") {
+          wx.navigateTo({
+            url: '/page/my/pages/orderInfo/orderInfo?shop_info=' + res.data.resultdata + '&callState=' + res.data.state
+          })
+        }
+        else {
+          wx.showModal({
+            title: '温馨提示',
+            content: '服务器出问题了,不能提交sorry！',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                return;
+              }
+            }
+          })
+        }
+      },
+      fail: function (res) {
+        this.setData(
+          { showLoading: false }
+        )
+        wx.showModal({
+          title: '温馨提示',
+          content: '服务器出问题了,不能提交sorry！',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              return;
+            }
+          }
+        })
+      }
 
-    wx.navigateTo({
-      url: '/page/my/pages/orderInfo/orderInfo?shop_info=' + JSON.stringify(goData)
-    })
 
+
+    });
+
+
+
+  },
+  onLoad: function () {
+
+
+    this.setData(
+      {
+        showLoading: false,
+        time: util.formatTime2(new Date)
+      }
+    )
   }
+
+
 });

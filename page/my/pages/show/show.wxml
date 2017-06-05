@@ -11,13 +11,13 @@
       <view wx:if="{{shopdata.length>0}}">
         <view class="flex-wrp" style="flex-direction:column;">
           <!--<view class="flex-item flex-item-1" style="background-size: contain;background: #00FF00 url({{shopdata[curIndex].imageurl}}) no-repeat fixed top"></view>-->
-          <image  class="flex-item flex-item-1"  src="{{shopdata[curIndex].imageurl}}"></image>
+          <image  class="flex-item flex-item-1"  src="{{shopdata[curIndex].image}}"></image>
           <view class="flex-item flex-item-2" style="margin-top:20rpx;">
-           <view> {{shopdata[curIndex].text}}</view>
+           <view> {{shopdata[curIndex].introduce}}</view>
           </view>
         </view>
         <view class="footer">
-          <button type="primary" bindtap="bindSubmit">预订</button>
+          <button type="primary" bindtap="bindSubmit">预订  ¥{{shopdata[curIndex].price}}</button>
         </view>
       </view>
       <!--如果无数据，则显示数据-->

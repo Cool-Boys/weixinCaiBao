@@ -2,49 +2,64 @@
   <view class="page-body">
     <view class="top">
       <button type="primary" style="background:#B2B2B2; margin-bottom:0;" bindtap="adddata">再整一个</button>
+      <label style="margin-left:10px">不选择配料，姐姐会按大众口味（酱选择豆瓣酱，配料都正常）制作。</label>温馨提示：<text style="color:red">选好预定时间呦</text>
+        <view class="line"></view>
     </view>
 
     <!-- 商品区-->
-    <view style="margin-top:130rpx">
+    <view style="margin-top:230rpx;">
       <block wx:if="{{shopdata.length>0}}">
-        <view wx:for="{{shopdata}}" class="flex-wrp" style="flex-direction:row;">
-          <view class="flex-item">
-            <image src="{{item.imageUrl}}" class="flex-item-image"></image>
-          </view>
-          <view class="flex-item flex-item-text">
-            <input bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}" placeholder="请备注您的食材" bindinput="bindKeyInput" bindblur="bindblurInput" value="{{item.memo}}" auto-focus />
-            <input bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}" value="{{item.saucetype}}" placeholder="请备注您的口味" />
-          </view>
-          <!--一套-->
-          <block wx:if="{{index>0}}">
-            <view class="flex-item" style="width:80rpx;">
-              <lable class="flex-item-label" style="text-align:center">
-                <image src="../../../../image/icon_pencil-edit.png" bindtap="copydata" data-index="{{index}}" style="width:32rpx;height:32rpx"></image>
-              </lable>
+        <block wx:for="{{shopdata}}">
+          <view class="flex-wrp" style="flex-direction:row;">
+            <view class="flex-item">
+              <image src="{{item.image}}" class="flex-item-image"></image>
             </view>
-            <view class="flex-item " style="width:100rpx">
-              <lable class="flex-item-label" >
-                <image src="../../../../image/mtrash.png" bindtap="deletedata" data-index="{{index}}" style="width:32rpx;height:32rpx"></image>
-              </lable>
-            </view>
-          </block>
-          <block wx:else>
-            <view class="flex-item " style="width:150rpx;text-align:center">
-              <lable class="flex-item-label" >
-                <image src="../../../../image/mtrash.png" bindtap="deletedata" data-index="{{index}}" style="width:32rpx;height:32rpx"></image>
-              </lable>
+            <view class="flex-item flex-item-text" style="flex-direction:row;">
+              <!--<input bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}" placeholder="请备注您的食材" bindinput="bindKeyInput" bindblur="bindblurInput" value="{{item.memo}}"  />
+            <input bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}" value="{{item.saucetype}}" placeholder="请备注您的口味" />-->
+              <view class="{{curIndex == index ? 'active' : ''}}">
+                <view bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}" class="spview" style="{{item.memo.length<=0?'height:40rpx;':''}}" value="{{item.memo}}">配料：{{item.memo}}
+
+                </view>
+                <view bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}" class="spview " style="{{item.saucetype.length<=0?'height:40rpx;':''}}" value="{{item.saucetype}}">口味：{{item.saucetype}}
+                </view>
+              </view>
 
             </view>
-            <view class="flex-item " style="width:50rpx;"></view>
-          </block>
-          <!--end-->
-        </view>
+            <!--一套-->
+            <block wx:if="{{index>0}}">
+              <view class="flex-item" style="width:80rpx;">
+                <lable class="flex-item-label" style="text-align:center">
+                  <image src="../../../../image/icon_pencil-edit.png" bindtap="copydata" data-index="{{index}}" style="width:50rpx;height:50rpx"></image>
+                </lable>
+              </view>
+              <view class="flex-item " style="width:100rpx">
+                <lable class="flex-item-label">
+                  <image src="../../../../image/mtrash.png" bindtap="deletedata" data-index="{{index}}" style="width:50rpx;height:50rpx"></image>
+                </lable>
+              </view>
+            </block>
+            <block wx:else>
+              <view class="flex-item " style="width:150rpx;text-align:center">
+                <lable class="flex-item-label">
+                  <image src="../../../../image/mtrash.png" bindtap="deletedata" data-index="{{index}}" style="width:50rpx;height:50rpx"></image>
+                </lable>
+
+              </view>
+              <view class="flex-item " style="width:50rpx;"></view>
+            </block>
+            <!--end-->
+
+          </view>
+            <view class="line" style="margin-bottom:20rpx"></view>
+        </block>
       </block>
       <block wx:else>
         <view>空空如也</view>
+        <view class="line"></view>
       </block>
     </view>
-    <view class="line"></view>
+
 
     <view class="flex-wrp-tips">
       <!-- 调料区-->
@@ -74,11 +89,11 @@
     </view>
     <view class="flex-wrp">
       <view class="flex-item" style="flex:1">
-        <text>预定时间:</text>
+        <text>取货时间:</text>
       </view>
       <view class="flex-item flex-item-text" style="flex:5">
-        <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-          <view class="picker">
+        <picker mode="time" value="{{time}}" start="{{time}}" end="21:01" bindchange="bindTimeChange">
+          <view class="picker" style="color:red">
             {{time}}
           </view>
         </picker>
@@ -89,7 +104,7 @@
         <text>备注信息:</text>
       </view>
       <view class="flex-item flex-item-text" style="flex:5">
-        <input bindinput="bindMessageInput" />
+        <input bindinput="bindMessageInput" placeholder="给大姐姐捎句话，例如多放酱等。"  />
       </view>
     </view>
     <view class="line" style="margin-bottom:150rpx"></view>
@@ -97,4 +112,5 @@
       <button type="primary" bindtap="bindSubmit">提交</button>
     </view>
   </view>
+   <loading wx:if="{{showLoading}}">加载中</loading>
 </view>

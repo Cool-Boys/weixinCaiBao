@@ -2,16 +2,14 @@ new Page({
   data: {
     shopinfo: [],
     shopamount: 0,
-    time: '2',
-    memo: '1'
+    callState:'',
+   orderInfo:''
   },
   onLoad: function (options) {
     // 生命周期函数--监听页面加载
-    console.log(options.shop_info);
     var tt = JSON.parse(options.shop_info);
-    console.log(tt.shopData);
-
-    let shopdata = tt.shopData;
+    var callstate = options.callState;
+    let shopdata = JSON.parse(tt.info);
     let str = '';
     let amount = 0;
     for (var i = 0; i < shopdata.length; i++) {
@@ -20,16 +18,18 @@ new Page({
 
 
     this.setData({
+      orderInfo: tt,
       shopinfo: shopdata,
       shopamount: amount,
+      callState: callstate,
       time: tt.time,
       memo: tt.memo
     });
-    wx.showToast({
-      title: '成功',
-      icon: 'success',
-      duration: 2000
-    })
+    // wx.showToast({
+    //   title: '成功',
+    //   icon: 'success',
+    //   duration: 2000
+    // })
 
   },
   onReady: function () {

@@ -46,5 +46,5 @@
   margin-top: 10rpx;
   padding-left: 20rpx;
   padding-right: 20px;
-  border: 1rpx solid #ABABAB;
+  border-bottom: 1rpx solid #ABABAB;
 }
