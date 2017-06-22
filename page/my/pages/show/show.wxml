@@ -3,21 +3,42 @@
     <!--左侧栏-->
     <view class="nav_left">
       <block wx:for="{{shopdata}}">
-        <view class="nav_left_items {{curNav == item.id ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="switchRightTab" >{{item.name}}</view>
+        <view class="nav_left_items {{curIndex == index ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="switchRightTab">{{item.name}}</view>
       </block>
     </view>
     <view class="nav_right">
       <!--如果有数据，才遍历项-->
       <view wx:if="{{shopdata.length>0}}">
-        <view class="flex-wrp" style="flex-direction:column;">
-          <!--<view class="flex-item flex-item-1" style="background-size: contain;background: #00FF00 url({{shopdata[curIndex].imageurl}}) no-repeat fixed top"></view>-->
-          <image  class="flex-item flex-item-1"  src="{{shopdata[curIndex].image}}"></image>
-          <view class="flex-item flex-item-2" style="margin-top:20rpx;">
-           <view> {{shopdata[curIndex].introduce}}</view>
+
+        <block wx:if="{{shopdata[curIndex].flag=='S'}}">
+
+          <view class="flex-wrp" style="flex-direction:column;">
+
+            <image class="flex-item flex-item-1" src="{{shopdata[curIndex].image}}"></image>
+            <view class="flex-item flex-item-2" style="margin-top:20rpx;">
+              <view> {{shopdata[curIndex].introduce}}</view>
+            </view>
+
+            <block wx:if="{{isAdmin=='T'}}">
+              <button type="warn" bindtap="bindEdit">编辑</button>
+            </block>
           </view>
-        </view>
+        </block>
+        <block wx:else>
+
+          <view class="flex-wrp" style="flex-direction:column; border: 1rpx solid #1aad19;">
+            <text style="text-align:center;font-weight:bold;">通知</text>
+            <view class="line"></view>
+            <view class="flex-item-2">
+              <view> {{shopdata[curIndex].reason}}</view>
+            </view>
+          </view>
+          <block wx:if="{{isAdmin=='T'}}">
+            <button type="warn" bindtap="bindEdit">编辑</button>
+          </block>
+        </block>
         <view class="footer">
-          <button type="primary" bindtap="bindSubmit">预订  ¥{{shopdata[curIndex].price}}</button>
+          <button type="primary" style="width:95%;" disabled="{{shopdata[curIndex].flag=='S'?false:true}}" bindtap="bindSubmit">预订 ¥{{shopdata[curIndex].price}}.00</button>
         </view>
       </view>
       <!--如果无数据，则显示数据-->

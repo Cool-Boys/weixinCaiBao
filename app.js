@@ -1,5 +1,5 @@
 const openIdUrl = require('./config').openIdUrl
-
+const common=require('./page/common/common.js')
 App({
   onLaunch: function () {
     console.log('App Launch')
@@ -12,6 +12,7 @@ App({
             success() {
               // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
               console.log('同意获取用户信息');
+              common.login();
             }
           })
         }
@@ -26,6 +27,7 @@ App({
   },
   globalData: {
     hasLogin: false,
+    isAdmin: 'F',
     openid: null,
     userId:null
   },

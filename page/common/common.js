@@ -51,7 +51,11 @@ function thirdLogin(code, userInfo) {
         getApp().globalData.hasLogin = false;
       }
       else {
-        getApp().globalData.userId = data.data.resultdata;
+        var arr = data.data.resultdata.split('-');
+        getApp().globalData.userId = arr[0];
+        getApp().globalData.isAdmin = arr[1];
+        console.log('my  login successd........' + getApp().globalData.userId);        
+        console.log('my  login successd........' + getApp().globalData.isAdmin );
         getApp().globalData.hasLogin = true;
       }
 

@@ -10,8 +10,8 @@ var host = "14592619.qcloud.la"
 var config = {
   
     // 下面的地址配合云端 Server 工作
-  host:'http://192.168.189.1:8080',
-
+  host:'http://192.168.1.106:8080',
+  // host: ' https://48759767.xilongmei.com',
     // 登录地址，用于建立会话
     //loginUrl: `https://${host}/login`,
     //loginUrl: `https://${host}/login`,

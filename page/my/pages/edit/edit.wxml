@@ -1,0 +1,40 @@
+<view class="container">
+  <view class="page-body">
+
+<view class="weui-cell weui-cell_input">商品信息：{{name}}</view>
+
+    <view class="section">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+
+          <view class="weui-cell__hd">
+            <view class="weui-label" style="width:52px">在售：</view>
+          </view>
+          <view class="weui-cell__bd">
+            <switch class="weui-input" checked bindchange="switch1Change" />
+          </view>
+
+        </view>
+      </view>
+    </view>
+    <view class="section">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          数量：
+          <input class="weui-input" type="number" bindinput="bindKeyInput" placeholder="请输入数量" />
+        </view>
+      </view>
+    </view>
+
+  <view class="section">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          停售原因：
+          <input class="weui-input"  bindinput="bindResionKeyInput" placeholder="请输入文本" />
+        </view>
+      </view>
+    </view>
+
+    <button class="mini-btn" type="primary" bindtap="btnSubmit" style="width:50%">确定</button>
+  </view>
+</view>

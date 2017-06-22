@@ -4,11 +4,13 @@ Page({
   data: {
     shopdata: [],
     curNav: 1,
+    isAdmin: null,
     curIndex: 0
   },
   onLoad: function () {  
-    common.login();
-   
+    this.setData({
+      isAdmin: getApp().globalData.isAdmin
+    })
     var that = this
       wx.request({
         url: host+'/tgoods/GetDataForApp',
@@ -26,6 +28,25 @@ Page({
         }
        
      });
+  },
+  onShow:function(){
+
+    var that = this
+    wx.request({
+      url: host + '/tgoods/GetDataForApp',
+      method: 'GET',
+      data: {},
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          shopdata: res.data
+        })
+      }
+
+    });
   },
   //事件处理函数  
   switchRightTab: function (e) {
@@ -50,6 +71,12 @@ Page({
       complete: function (res) {
         // complete
       }
+    })
+  },
+  bindEdit:function(e){
+    let model = this.data.shopdata[this.data.curIndex];
+    wx.navigateTo({
+      url: '/page/my/pages/edit/edit?id=' + model.id + '&name=' + model.name
     })
   }
 

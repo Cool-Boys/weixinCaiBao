@@ -1,0 +1,12 @@
+@import "../../../common/lib/weui.wxss";
+
+.section{
+ margin: 10rpx 0;
+ 
+}
+
+.editContent{
+height: 100px;
+background: #ffff00;
+
+}

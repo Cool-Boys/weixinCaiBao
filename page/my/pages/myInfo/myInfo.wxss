@@ -1,7 +1,6 @@
 .container {
    background-color: #E4E4E4;
   color: #17811C;
-  padding-top: 1rpx;
   padding-left: 10rpx;
   padding-right: 10rpx;
   font-size: 25rpx;
@@ -28,7 +27,12 @@
   margin-bottom: 2rpx;
   margin-top: 2rpx;
 }
-
+.orderJ{
+   background-color: #9DF88F;
+}
+.orderD{
+   background-color: #D8DBC4;
+}
 .item-1 {
   margin-right: 20rpx;
 }
@@ -37,7 +41,7 @@
   padding-bottom: 20rpx;
   padding-top: 20rpx;
   padding-left: 20rpx;
-  background-color: #EFEFEF;
+  /*background-color: #EFEFEF;*/
   margin-bottom: 1rpx;
 }
 
@@ -47,4 +51,16 @@
   padding-left: 20rpx;
   padding-right: 20px;
   border-bottom: 1rpx solid #ABABAB;
+}
+.footer {
+  background-color: #E4E4E4;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 9999;
+ display: flex;
+  flex-direction: row;
 }

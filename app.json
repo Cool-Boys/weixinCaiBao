@@ -1,10 +1,13 @@
 {
   "pages": [
+   
     "page/my/pages/show/show",
     "page/my/pages/shopcar/shopcar",
     "page/my/pages/index/index",
     "page/my/pages/myInfo/myInfo",
-    "page/my/pages/orderInfo/orderInfo"
+    "page/my/pages/orderInfo/orderInfo",
+    "page/my/pages/edit/edit"
+    
   ],
   "window": {
     "navigationBarTextStyle": "white",

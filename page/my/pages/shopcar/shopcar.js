@@ -1,9 +1,12 @@
 const host = require('./../../../../config').host
 var util = require('./../../../../util/util.js')
 Page({
+  onReady: function () {
+    this.animation = wx.createAnimation()
+  },
   data: {
     shopdata: [
-      { id: 1, name: '饭包', memo: '', saucetype: '', image: '../../../../image/fb.jpg', price: 6 }
+      { id: 4, name: '饭包', memo: '', saucetype: '', image: '../../../../image/fb.jpg', price: 6 }
     ],
     flavortype: [
       { name: '葱', flavortype: '1', ischeck: false },
@@ -19,6 +22,8 @@ Page({
     curIndex: 0,
     time: '12:01',
     message: '',
+    footHeight:650,
+    toView: 'row0',
     showLoading: true
   },
   switchMemoInput: function (e) {
@@ -26,6 +31,8 @@ Page({
     let id = e.target.dataset.id,
       index = parseInt(e.target.dataset.index);
     console.log('id' + id + '  index:' + index);
+    // this.animation.translate(0, 350).step()
+    // this.setData({ animation: this.animation.export(), footHeight:200 })
     if (this.data.curIndex != index) {
       var tt = [
         { name: '鸡蛋酱', ischeck: false }, { name: '豆瓣酱', ischeck: false }, { name: '辣酱', ischeck: false }]
@@ -107,7 +114,7 @@ Page({
     }
 
     this.setData(
-      { shopdata: this.data.shopdata }
+      { shopdata: this.data.shopdata, curIndex: index }
     )
   },
 
@@ -117,10 +124,22 @@ Page({
     let length = this.data.shopdata.length;
     console.log('length值为：', length)
     this.data.shopdata.splice(length + 1, 0,
-      { id: '', name: '饭包', memo: '', saucetype: '', image: '../../../../image/fb.jpg', price: 6 });
+      { id: 4, name: '饭包', memo: '', saucetype: '', image: '../../../../image/fb.jpg', price: 6 });
     this.setData(
       { shopdata: this.data.shopdata }
     )
+    this.setData({
+      toView: 'row' + (this.data.shopdata.length-1)
+    })
+    // for (var i = 0; i < this.data.shopdata.length; ++i) {
+    //   if ('row'+i === this.data.toView) {
+    //     this.setData({
+    //       toView: 'row' + i
+    //     })
+    //     break
+    // }
+    // }
+
   },
   bindKeyInput: function (e) {
     let text = e.detail.value;
@@ -176,10 +195,6 @@ Page({
       })
       return;
     }
-
-
-
-
     console.log('商品共计：' + this.data.shopdata.length + '个');
     let str = '';
     let amount = 0;
@@ -192,16 +207,18 @@ Page({
 
     console.log('预定时间：' + this.data.time);
     console.log('备注：' + this.data.message);
-    var goData = { shopData: this.data.shopdata, time: this.data.time, memo: this.data.message };
+    var goData = { shopData: this.data.shopdata, time: this.data.time, memo: this.data.message, amount: amount };
 
     var model = {};
     model.info = JSON.stringify(this.data.shopdata);
     model.message = this.data.message;
     model.user_Id = getApp().globalData.userId;
     model.time = this.data.time;
+    model.amount = amount;
     // this.setData(
     //   { showLoading: true }
     // )
+    var url = host + '/TOrders/SaveDataForApp?data=' + JSON.stringify(model);
     wx.request({
       url: host + '/TOrders/SaveDataForApp',
       data: { data: JSON.stringify(model) },

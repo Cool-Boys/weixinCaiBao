@@ -1,22 +1,22 @@
 <view class="container">
   <view class="page-body">
     <view class="top">
-      <button type="primary" style="background:#B2B2B2; margin-bottom:0;" bindtap="adddata">再整一个</button>
-      <label style="margin-left:10px">不选择配料，姐姐会按大众口味（酱选择豆瓣酱，配料都正常）制作。</label>温馨提示：<text style="color:red">选好预定时间呦</text>
-        <view class="line"></view>
+      <!--<button type="primary" style="background:#B2B2B2; margin-bottom:0;width:95%" bindtap="adddata">再整一个</button>-->
+      <label style="margin-left:10px;">不选择配料，姐姐会按大众口味（酱选择豆瓣酱，配料都正常）制作。</label>温馨提示：
+      <text style="color:red">选好预定时间呦</text>
+      <view class="line"></view>
     </view>
-
-    <!-- 商品区-->
-    <view style="margin-top:230rpx;">
+    <scroll-view scroll-y style="height:180px;margin-top:100rpx;" enable-back-to-top="true" scroll-into-view="{{toView}}">
+      <!-- 商品区-->
+      <!--<view style="">-->
       <block wx:if="{{shopdata.length>0}}">
         <block wx:for="{{shopdata}}">
-          <view class="flex-wrp" style="flex-direction:row;">
+          <view id="row{{index}}" class="flex-wrp" style="flex-direction:row;">
             <view class="flex-item">
+              <text style="margin: auto 0rpx;">{{index+1}}</text>
               <image src="{{item.image}}" class="flex-item-image"></image>
             </view>
             <view class="flex-item flex-item-text" style="flex-direction:row;">
-              <!--<input bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}" placeholder="请备注您的食材" bindinput="bindKeyInput" bindblur="bindblurInput" value="{{item.memo}}"  />
-            <input bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}" value="{{item.saucetype}}" placeholder="请备注您的口味" />-->
               <view class="{{curIndex == index ? 'active' : ''}}">
                 <view bindtap="switchMemoInput" data-index="{{index}}" data-id="{{item.id}}" class="spview" style="{{item.memo.length<=0?'height:40rpx;':''}}" value="{{item.memo}}">配料：{{item.memo}}
 
@@ -33,7 +33,7 @@
                   <image src="../../../../image/icon_pencil-edit.png" bindtap="copydata" data-index="{{index}}" style="width:50rpx;height:50rpx"></image>
                 </lable>
               </view>
-              <view class="flex-item " style="width:100rpx">
+              <view class="flex-item " style="width:80rpx;margin-right:30rpx">
                 <lable class="flex-item-label">
                   <image src="../../../../image/mtrash.png" bindtap="deletedata" data-index="{{index}}" style="width:50rpx;height:50rpx"></image>
                 </lable>
@@ -51,66 +51,76 @@
             <!--end-->
 
           </view>
-            <view class="line" style="margin-bottom:20rpx"></view>
+          <view class="line" style="margin-bottom:20rpx"></view>
         </block>
       </block>
       <block wx:else>
         <view>空空如也</view>
         <view class="line"></view>
       </block>
-    </view>
+      <!--</view>-->
+    </scroll-view>
+    <view class="footer1" style="height:{{footHeight}}rpx">
 
-
-    <view class="flex-wrp-tips">
-      <!-- 调料区-->
-      <view class="flex-wrp-tips-item" wx:for="{{flavortype}}">
-        <label class="flex-wrp-tips-item-left">{{item.name}}</label>
-        <radio-group class="radio-group" bindchange="radioChange" data-text="{{item.name}}" data-index="{{index}}">
-          <label class="radio" style="width:30%;height:55rpx;text-size:10rpx;margin:10rpx;">
-            <radio value="多放{{item.name}}" checked="{{item.ischeck}}" />多放
-          </label>
-          <label class="radio" style="width:30%;height:55rpx; margin:10rpx;">
-            <radio value="少放{{item.name}}" checked="{{item.ischeck}}" />少放
-          </label>
-          <label class="radio" style="width:30%;height:55rpx; margin:10rpx;">
-            <radio value="不放{{item.name}}" checked="{{item.ischeck}}" />不放
-          </label>
-        </radio-group>
-      </view>
-
-      <!-- 选酱区-->
-      <view class="flex-wrp-tips-item-j">
-        <checkbox-group bindchange="checkboxChange">
-          <label class="checkbox" wx:for="{{saucetype}}">
-            <checkbox style="margin-left:30rpx" value="{{item.name}}" checked="{{item.ischeck}}" />{{item.name}}
-          </label>
-        </checkbox-group>
-      </view>
-    </view>
-    <view class="flex-wrp">
-      <view class="flex-item" style="flex:1">
-        <text>取货时间:</text>
-      </view>
-      <view class="flex-item flex-item-text" style="flex:5">
-        <picker mode="time" value="{{time}}" start="{{time}}" end="21:01" bindchange="bindTimeChange">
-          <view class="picker" style="color:red">
-            {{time}}
+<!--animation="{{animation}}"  style="background:#ffff00"-->
+      <view style="background:#D3D3D3">
+        <view class="flex-wrp-tips">
+          <!-- 调料区-->
+          <view class="flex-wrp-tips-item" wx:for="{{flavortype}}">
+            <label class="flex-wrp-tips-item-left">{{item.name}}</label>
+            <radio-group class="radio-group" bindchange="radioChange" data-text="{{item.name}}" data-index="{{index}}">
+              <label class="radio" style="width:30%;height:55rpx;text-size:10rpx;margin:10rpx;">
+                <radio value="多放{{item.name}}" checked="{{item.ischeck}}" />多放
+              </label>
+              <label class="radio" style="width:30%;height:55rpx; margin:10rpx;">
+                <radio value="少放{{item.name}}" checked="{{item.ischeck}}" />少放
+              </label>
+              <label class="radio" style="width:30%;height:55rpx; margin:10rpx;">
+                <radio value="不放{{item.name}}" checked="{{item.ischeck}}" />不放
+              </label>
+            </radio-group>
           </view>
-        </picker>
+
+          <!-- 选酱区-->
+          <view class="flex-wrp-tips-item-j">
+            <checkbox-group bindchange="checkboxChange">
+              <label class="checkbox" wx:for="{{saucetype}}">
+                <checkbox style="margin-left:30rpx" value="{{item.name}}" checked="{{item.ischeck}}" />{{item.name}}
+              </label>
+            </checkbox-group>
+          </view>
+        </view>
+        <view class="flex-wrp">
+          <view class="flex-item" style="flex:1">
+            <text>取货时间:</text>
+          </view>
+          <view class="flex-item flex-item-text" style="flex:5">
+            <picker mode="time" value="{{time}}" start="{{time}}" end="21:01" bindchange="bindTimeChange">
+              <view class="picker" style="color:red">
+                {{time}}
+              </view>
+            </picker>
+          </view>
+        </view>
+        <view class="flex-wrp">
+          <view class="flex-item" style="flex:1">
+            <text>备注信息:</text>
+          </view>
+          <view class="flex-item flex-item-text" style="flex:5">
+            <input bindinput="bindMessageInput" placeholder="给大姐姐捎句话，例如多放酱等。" />
+          </view>
+        </view>
+
+      </view>
+
+      <view class="line" style="margin-bottom:50rpx"></view>
+
+      <view class="footer">
+        <button type="primary" style="background:#1898E0;width:40%" bindtap="adddata">再整一个({{shopdata.length}})</button>
+        <button type="primary" bindtap="bindSubmit" style="width:40%">提交</button>
       </view>
     </view>
-    <view class="flex-wrp">
-      <view class="flex-item" style="flex:1">
-        <text>备注信息:</text>
-      </view>
-      <view class="flex-item flex-item-text" style="flex:5">
-        <input bindinput="bindMessageInput" placeholder="给大姐姐捎句话，例如多放酱等。"  />
-      </view>
-    </view>
-    <view class="line" style="margin-bottom:150rpx"></view>
-    <view class="footer">
-      <button type="primary" bindtap="bindSubmit">提交</button>
-    </view>
+
   </view>
-   <loading wx:if="{{showLoading}}">加载中</loading>
+  <loading wx:if="{{showLoading}}">加载中</loading>
 </view>
