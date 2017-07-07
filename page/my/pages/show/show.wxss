@@ -79,25 +79,21 @@
 .flex-item-2 view:first-letter {
   float: left;
   font-size: 3em;
-  color:#1AAD19;
+  color: #1aad19;
   line-height: 1;
   font-weight: bold;
   margin-right: 0.2em;
 }
+
 .line {
- 
   margin-bottom: 15rpx;
   margin-top: 15rpx;
   padding-left: 20rpx;
   padding-right: 20rpx;
   border-bottom: 1rpx solid #1aad19;
 }
+
 .footer {
-  /*position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: yellow;*/
   position: fixed;
   left: 0px;
   bottom: 0px;
@@ -106,4 +102,41 @@
   margin: 0;
   z-index: 9999;
   background-color: #e4e4e4;
+  flex-direction: row;
+}
+
+.userinfo-avatar {
+  border-radius: 98rpx;
+  width: 98rpx;
+  height: 98rpx;
+  background: #fff;
+  position: fixed;
+  margin-left: 28px;
+  margin-top: -10px;
+}
+
+.cle-img {
+  border-radius: 28rpx;
+  width: 28rpx;
+  height: 28rpx;
+  background: #fe0000;
+  position: fixed;
+  font-size: 8pt;
+  color: #fff;
+  padding-left: 6px;
+  margin-left: 64px;
+  margin-top: -10px;
+}
+
+.cle-img1 {
+  border-radius: 20rpx;
+  width: 10rpx;
+  height: 20rpx;
+  background: #fe0000;
+  position: fixed;
+  font-size: 8pt;
+  color: #fff;
+  padding-left: 6px;
+  margin-left: 94px;
+  margin-top: 20px;
 }

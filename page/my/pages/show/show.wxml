@@ -18,10 +18,13 @@
             <view class="flex-item flex-item-2" style="margin-top:20rpx;">
               <view> {{shopdata[curIndex].introduce}}</view>
             </view>
-
-            <block wx:if="{{isAdmin=='T'}}">
-              <button type="warn" bindtap="bindEdit">编辑</button>
-            </block>
+            <view style="display: flex;flex-direction:row;">
+             <label class="cle-img1" animation="{{animation}}"></label>
+              <button type="primary" disabled="{{shopdata[curIndex].flag=='S'?false:true}}" bindtap="bindAdd">预订 ¥{{shopdata[curIndex].price}}.00</button>
+              <block wx:if="{{isAdmin=='T'}}">
+                <button type="warn" style="width:240rpx" bindtap="bindEdit">编 辑</button>
+              </block>
+            </view>
           </view>
         </block>
         <block wx:else>
@@ -33,12 +36,32 @@
               <view> {{shopdata[curIndex].reason}}</view>
             </view>
           </view>
-          <block wx:if="{{isAdmin=='T'}}">
-            <button type="warn" bindtap="bindEdit">编辑</button>
-          </block>
+
+          <view style="display: flex;flex-direction:row;">
+            <button type="primary" disabled="{{shopdata[curIndex].flag=='S'?false:true}}" bindtap="bindAdd">预订 ¥{{shopdata[curIndex].price}}.00</button>
+            <block wx:if="{{isAdmin=='T'}}">
+              <button type="warn" style="width:240rpx" bindtap="bindEdit">编 辑</button>
+            </block>
+          </view>
+
         </block>
         <view class="footer">
-          <button type="primary" style="width:95%;" disabled="{{shopdata[curIndex].flag=='S'?false:true}}" bindtap="bindSubmit">预订 ¥{{shopdata[curIndex].price}}.00</button>
+          <view style="display: flex;flex-direction:row;">
+            <image class="userinfo-avatar" src="../../../../image/mcart.png"></image>
+            <block wx:if="{{selData.length>0}}">
+              <label class="cle-img">{{selData.length}}</label>
+            </block>
+            <block wx:if="{{selData.length>0}}">
+              <view bindtap="bindSubmit" style="background:#1AAD19;color:#000 ;positon:relative;width:80px;margin-left:280px;margin-right:0px;padding:15px; border-left: 1rpx solid #B5B5B5;">
+                <label>去结算</label>
+              </view>
+            </block>
+            <block wx:else>
+              <view style="positon:relative;width:80px;margin-left:280px;margin-right:0px;padding:15px; border-left: 1rpx solid #B5B5B5;">
+                <label>去结算</label>
+              </view>
+            </block>
+          </view>
         </view>
       </view>
       <!--如果无数据，则显示数据-->
@@ -46,4 +69,6 @@
     </view>
 
   </view>
+
+  <!--<loading wx:if="{{showLoading}}">加载中</loading>-->
 </view>

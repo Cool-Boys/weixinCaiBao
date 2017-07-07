@@ -48,7 +48,6 @@
   margin-top: 0rpx;
   padding-left: 20rpx;
   font-size: 25rpx;
-  height: 400rpx;
 }
 
 .flex-wrp-tips-item {

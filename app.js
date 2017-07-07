@@ -18,6 +18,8 @@ App({
         }
       }
     })
+
+ 
   },
   onShow: function () {
     console.log('App Show')
@@ -29,7 +31,8 @@ App({
     hasLogin: false,
     isAdmin: 'F',
     openid: null,
-    userId:null
+    userId:null,
+    selData:null
   },
   // lazy loading openid
   getUserOpenId: function(callback) {

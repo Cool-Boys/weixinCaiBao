@@ -2,6 +2,7 @@ const host = require('./../../config').host
 function login() {
   console.log('logining..........');
   //调用登录接口
+
   wx.login({
     success: function (e) {
       console.log('wxlogin successd........');
@@ -45,7 +46,8 @@ function thirdLogin(code, userInfo) {
       'Accept': 'application/json'
     },
     success: function (data) {
-      console.log('my  login successd........');
+    
+    
       console.log(data);
       if (data.data.message != "ok") {
         getApp().globalData.hasLogin = false;
@@ -74,6 +76,6 @@ function thirdLogin(code, userInfo) {
     }
 
   });
-
+ 
 }
 module.exports.login = login

@@ -2,11 +2,66 @@ const host = require('./../../../../config').host
 var util = require('./../../../../util/util.js')
 Page({
   onReady: function () {
+
+  },
+  onShow: function () {
+    var selData;
+    var shopdata, tempData = [];
+    //缓存中的美食
+    shopdata = wx.getStorageSync('shopdata');
+    console.log(shopdata);
+    //选中的美食
+    selData = wx.getStorageSync('selData');
+    console.log(selData);
+    var dd = "", tt = "",itemList=[];
+    var footHeight = 650;
+
+    if (selData.length > 0) {
+      for (var i = 0; i < selData.length; i++) {
+        var model = shopdata[selData[i].index];
+        var id = model.id;
+        var temp = { id: model.id, name: model.name, memo: '', saucetype: '', image: model.image, price: model.price };
+      
+        tempData.splice(tempData.length + 1, 0, temp);
+      }
+
+      let flavorData = this.data.flavorData;
+      for (var i = 0; i < flavorData.length; i++) {
+        if (flavorData[i].id == id) {
+          dd = flavorData[i].fdata;
+          tt = flavorData[i].sdata;
+        }
+        if (dd.length > 3) {
+          footHeight = 650
+        }
+        else {
+          footHeight = 450
+        }
+      }
+    }
+
+    for (var i = 0; i < shopdata.length; i++){
+      var model = shopdata[i];
+      itemList.splice(itemList.length + 1, 0, model.name);
+    }
+    
+    this.setData({
+      selData: selData,
+      refData: shopdata,
+      shopdata: tempData,
+      saucetype: tt,
+      flavortype: dd,
+      footHeight: footHeight,
+      itemList: itemList
+    })
+  },
+  onReady: function () {
     this.animation = wx.createAnimation()
   },
   data: {
+    refData: [],
     shopdata: [
-      { id: 4, name: '饭包', memo: '', saucetype: '', image: '../../../../image/fb.jpg', price: 6 }
+      // { id: 4, name: '饭包', memo: '', saucetype: '', image: '../../../../image/fb.jpg', price: 6 }
     ],
     flavortype: [
       { name: '葱', flavortype: '1', ischeck: false },
@@ -15,14 +70,39 @@ Page({
       { name: '土豆丝', flavortype: '4', ischeck: false },
       { name: '黄瓜丝', flavortype: '5', ischeck: false }
     ],
+    flavorData: [{
+      id: 5,
+      fdata: [
+        { name: '葱', flavortype: '1', ischeck: false },
+        { name: '青椒', flavortype: '2', ischeck: false },
+        { name: '香菜', flavortype: '3', ischeck: false },
+        { name: '土豆丝', flavortype: '4', ischeck: false },
+        { name: '黄瓜丝', flavortype: '5', ischeck: false }
+      ],
+      sdata: [
+        { name: '鸡蛋酱', ischeck: false }, { name: '豆瓣酱', ischeck: false }, { name: '辣酱', ischeck: false }
+      ]
+    },
+    {
+      id: 4,
+      fdata: [
+        { name: '香菜', flavortype: '6', ischeck: false },
+        { name: '柿子', flavortype: '7', ischeck: false },
+        { name: '黄瓜丝', flavortype: '8', ischeck: false }
+      ],
+      sdata: []
+    }],
     saucetype: [
       { name: '鸡蛋酱', ischeck: false }, { name: '豆瓣酱', ischeck: false }, { name: '辣酱', ischeck: false }
     ],
+    selData: [],
+    itemList:[],
     curNav: 1,
     curIndex: 0,
     time: '12:01',
     message: '',
-    footHeight:650,
+    footHeight: 650,
+    shopHeight:180,
     toView: 'row0',
     showLoading: true
   },
@@ -31,27 +111,55 @@ Page({
     let id = e.target.dataset.id,
       index = parseInt(e.target.dataset.index);
     console.log('id' + id + '  index:' + index);
+    let flavorData = this.data.flavorData;
+    var dd = "", tt = "";
+    var footHeight = 650;
+    var shopHeight = 180;
+    for (var i = 0; i < flavorData.length; i++) {
+      if (flavorData[i].id == id) {
+        dd = flavorData[i].fdata;
+        tt = flavorData[i].sdata;
+      }
+      if (dd.length > 3) {
+        footHeight = 650
+        shopHeight=180
+      }
+      else {
+        footHeight = 450
+        shopHeight=280
+      }
+    }
     // this.animation.translate(0, 350).step()
     // this.setData({ animation: this.animation.export(), footHeight:200 })
     if (this.data.curIndex != index) {
-      var tt = [
-        { name: '鸡蛋酱', ischeck: false }, { name: '豆瓣酱', ischeck: false }, { name: '辣酱', ischeck: false }]
-      var dd = [
-        { name: '葱', flavortype: '1', ischeck: false },
-        { name: '青椒', flavortype: '2', ischeck: false },
-        { name: '香菜', flavortype: '3', ischeck: false },
-        { name: '土豆丝', flavortype: '4', ischeck: false },
-        { name: '黄瓜丝', flavortype: '5', ischeck: false }
-      ]
-      // 把点击到的某一项，设为当前index  
-      this.setData({
-        saucetype: tt,
-        flavortype: dd
-      })
+      // var tt = [
+      //   { name: '鸡蛋酱', ischeck: false }, { name: '豆瓣酱', ischeck: false }, { name: '辣酱', ischeck: false }]
+      // var dd = [
+      //   { name: '葱', flavortype: '1', ischeck: false },
+      //   { name: '青椒', flavortype: '2', ischeck: false },
+      //   { name: '香菜', flavortype: '3', ischeck: false },
+      //   { name: '土豆丝', flavortype: '4', ischeck: false },
+      //   { name: '黄瓜丝', flavortype: '5', ischeck: false }
+      // ]
+      // // 把点击到的某一项，设为当前index  
+      // this.setData({
+      //   saucetype: tt,
+      //   flavortype: dd
+      // })
     }
     this.setData({
-      curIndex: index
+      curIndex: index,
+      saucetype: tt,
+      flavortype: dd,
+      footHeight: footHeight,
+      shopHeight: shopHeight
     })
+var that=this;
+    setTimeout(function(){
+      console.log('length值为：', that.data.shopdata.length - 1)
+      that.setData({
+        toView: 'row' + (that.data.shopdata.length - 1)})
+    },50);
   },
 
   radioChange: function (e) {
@@ -124,22 +232,13 @@ Page({
     let length = this.data.shopdata.length;
     console.log('length值为：', length)
     this.data.shopdata.splice(length + 1, 0,
-      { id: 4, name: '饭包', memo: '', saucetype: '', image: '../../../../image/fb.jpg', price: 6 });
+      { id: 5, name: '饭包', memo: '', saucetype: '', image: '../../../../image/fb.jpg', price: 6 });
     this.setData(
       { shopdata: this.data.shopdata }
     )
     this.setData({
-      toView: 'row' + (this.data.shopdata.length-1)
+      toView: 'row' + (this.data.shopdata.length - 1)
     })
-    // for (var i = 0; i < this.data.shopdata.length; ++i) {
-    //   if ('row'+i === this.data.toView) {
-    //     this.setData({
-    //       toView: 'row' + i
-    //     })
-    //     break
-    // }
-    // }
-
   },
   bindKeyInput: function (e) {
     let text = e.detail.value;
@@ -153,20 +252,20 @@ Page({
   },
   bindTimeChange: function (e) {
 
-//     let aa = util.convertTime(this.data.time,'21:01');
-//     if (aa){
-//       wx.showModal({
-//         title: '温馨提示',
-//         content: '预定日期超了！！！',
-//         showCancel: false,
-//         success: function (res) {
-//           if (res.confirm) {
-//             return;
-//           }
-//         }
-//       })
+    //     let aa = util.convertTime(this.data.time,'21:01');
+    //     if (aa){
+    //       wx.showModal({
+    //         title: '温馨提示',
+    //         content: '预定日期超了！！！',
+    //         showCancel: false,
+    //         success: function (res) {
+    //           if (res.confirm) {
+    //             return;
+    //           }
+    //         }
+    //       })
 
-// }
+    // }
 
     this.setData({
       time: e.detail.value
@@ -232,6 +331,7 @@ Page({
         //   { showLoading: false }
         // )
         if (res.statusCode == "200") {
+          wx.clearStorage('selData');
           wx.navigateTo({
             url: '/page/my/pages/orderInfo/orderInfo?shop_info=' + res.data.resultdata + '&callState=' + res.data.state
           })
@@ -281,7 +381,28 @@ Page({
         time: util.formatTime2(new Date)
       }
     )
+  },
+  actionSheetTap: function () {
+    var that=this;
+    wx.showActionSheet({
+      itemList: this.data.itemList,
+      success: function (e) {
+        console.log(e.tapIndex)
+        var model = that.data.refData[e.tapIndex];
+        var temp = { id: model.id, name: model.name, memo: '', saucetype: '', image: model.image, price: model.price };
+        let length = that.data.shopdata.length;
+        that.data.shopdata.splice(length + 1, 0, temp);
+        that.setData(
+          { shopdata: that.data.shopdata }
+        )
+        that.setData({
+          toView: 'row' + (that.data.shopdata.length - 1)
+        })
+      }
+    })
   }
 
 
 });
+
+
