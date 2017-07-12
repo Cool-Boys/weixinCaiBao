@@ -14,13 +14,13 @@
           <image style="width:8px;height:12px;" src="../../../../image/right_arrow.png"></image>
         </view>
       </view>
-      <view class="line2"></view>
+      <!--<view class="line2"></view>
      <view style="display: flex;flex-direction:row;">
         <view style="width:94%;">历史订单</view>
         <view>
           <image style="width:8px;height:12px;" src="../../../../image/right_arrow.png"></image>
         </view>
-      </view>
+      </view>-->
     </view>
 
     <view class="flex-wrpm" style="flex-direction:column;">
