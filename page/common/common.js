@@ -15,7 +15,7 @@ function login() {
             console.log(code);
             console.log("encryptedData:" + encryptedData);
             console.log("res.iv:" + res.iv);
-
+            getApp().globalData.userInfo = res.rawData;
             thirdLogin(code, res.rawData);//调用服务器api
           }
         })
@@ -35,7 +35,7 @@ function thirdLogin(code, userInfo) {
   params.code = code;
   var temp = JSON.parse(userInfo)
   temp.avatarUrl = "";
-
+  console.log('userInfo1 ' + getApp().globalData.userInfo);
   console.log('userInfo ' + JSON.stringify(temp));
   params.userInfo = JSON.stringify(temp);
   wx.request({

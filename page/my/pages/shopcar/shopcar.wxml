@@ -74,7 +74,7 @@
               <label class="flex-wrp-tips-item-left">{{item.name}}</label>
               <radio-group class="radio-group" bindchange="radioChange" data-text="{{item.name}}" data-index="{{index}}">
                 <label class="radio" style="width:30%;height:55rpx;text-size:10rpx;margin:10rpx;">
-                  <radio value="多放{{item.name}}" checked="{{item.ischeck}}" />多放
+                  <radio value="多放{{item.name}}" checked="{{item.ischeck}}"  />多放
                 </label>
                 <label class="radio" style="width:30%;height:55rpx; margin:10rpx;">
                   <radio value="少放{{item.name}}" checked="{{item.ischeck}}" />少放

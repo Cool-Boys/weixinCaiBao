@@ -66,7 +66,7 @@ new Page({
   },
   bindUrl: function () {
 
-    wx.switchTab({
+    wx.navigateTo({
       url: '/page/my/pages/myInfo/myInfo'
     })
   },

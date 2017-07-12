@@ -32,6 +32,7 @@ App({
     isAdmin: 'F',
     openid: null,
     userId:null,
+    userInfo:null,
     selData:null
   },
   // lazy loading openid

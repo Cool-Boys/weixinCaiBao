@@ -13,18 +13,60 @@ Page({
     this.animation = wx.createAnimation()
   },
   onLoad: function () {
+    // var that = this
+    // wx.showLoading({
+    //   title: '加载中',
+    //   mask: true
+    // })
+    // var times = setInterval(function () {
+    //   if (getApp().globalData.isAdmin) {
+    //     // 在这里停止加载的提示框  
+    //     setTimeout(function () {
+    //       wx.hideLoading()
+    //     }, 500)
+    //         // 这里必须要清除不然就等着循环死吧  
+
+    //     clearTimeout(times);
+    //     that.setData({
+    //       isAdmin: getApp().globalData.isAdmin,
+    //       showLoading: false
+    //     })
+    //   }
+
+    // }, 500);
+    // wx.request({
+    //   url: host + '/tgoods/GetDataForApp',
+    //   method: 'GET',
+    //   data: {},
+    //   header: {
+    //     'Accept': 'application/json'
+    //   },
+    //   success: function (res) {
+    //     console.log(res);
+    //     //写入缓存中数据；
+    //     wx.setStorageSync('shopdata', res.data);
+    //     that.setData({
+    //       curNav: res.data.length > 0 ? res.data[0].id : 0,
+    //       shopdata: res.data
+    //     })
+    //   }
+
+    // });
+
+  },
+  onShow: function () {
     var that = this
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    })
+    // wx.showLoading({
+    //   title: '加载中',
+    //   mask: true
+    // })
     var times = setInterval(function () {
       if (getApp().globalData.isAdmin) {
         // 在这里停止加载的提示框  
         setTimeout(function () {
           wx.hideLoading()
         }, 500)
-            // 这里必须要清除不然就等着循环死吧  
+        // 这里必须要清除不然就等着循环死吧  
 
         clearTimeout(times);
         that.setData({
@@ -52,26 +94,6 @@ Page({
       }
 
     });
-
-  },
-  onShow: function () {
-
-    // var that = this
-    // wx.request({
-    //   url: host + '/tgoods/GetDataForApp',
-    //   method: 'GET',
-    //   data: {},
-    //   header: {
-    //     'Accept': 'application/json'
-    //   },
-    //   success: function (res) {
-    //     console.log(res)
-    //     that.setData({
-    //       shopdata: res.data
-    //     })
-    //   }
-
-    // });
   },
   //事件处理函数  
   switchRightTab: function (e) {

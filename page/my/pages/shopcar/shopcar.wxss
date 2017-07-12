@@ -62,7 +62,7 @@
   padding: 10rpx;
   margin-top: 20rpx;
   text-align: center;
-  background: #9df88f;
+  /*background: #9df88f;*/
   padding-right: 100rpx;
   margin-right:20rpx;
 

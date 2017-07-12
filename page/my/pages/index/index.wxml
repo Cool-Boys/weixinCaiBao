@@ -1,13 +1,42 @@
 <view class="container">
   <view class="page-body">
-    <view>
-      <label>预定信息：</label>{{shopinfo}}</view>
-    <view>
-      <label>预定时间：</label>{{time}}</view>
-    <view>
-      <label>卖家留言：</label>{{memo}}</view>
-    <view class="btn">
-      <button type="primary" bindtap="bindUrl">查看订单</button>
+    <view class="flex-wrp" style="flex-direction:row;">
+
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+    <view class="line"></view>
+
+    <view class="flex-wrpm"  style="flex-direction:column;">
+      <view bindtap="onclickShow" style="display: flex;flex-direction:row;">
+        <view style="width:94%;">今日订单</view>
+        <view>
+          <image style="width:8px;height:12px;" src="../../../../image/right_arrow.png"></image>
+        </view>
+      </view>
+      <view class="line2"></view>
+     <view style="display: flex;flex-direction:row;">
+        <view style="width:94%;">历史订单</view>
+        <view>
+          <image style="width:8px;height:12px;" src="../../../../image/right_arrow.png"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="flex-wrpm" style="flex-direction:column;">
+    <view style="display: flex;flex-direction:row;">
+        <view style="width:94%;">关于</view>
+        <view>
+          <image style="width:8px;height:12px;" src="../../../../image/right_arrow.png"></image>
+        </view>
+      </view>
+      <view class="line2"></view>
+      <view style="display: flex;flex-direction:row;">
+        <view style="width:94%;">意见反馈</view>
+        <view>
+          <image style="width:8px;height:12px;" src="../../../../image/right_arrow.png"></image>
+        </view>
+      </view>
     </view>
   </view>
 </view>

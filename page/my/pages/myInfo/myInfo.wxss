@@ -24,8 +24,6 @@
   overflow: hidden;
   height: 60rpx;
   background-color: #EFEFEF;
-  margin-bottom: 2rpx;
-  margin-top: 2rpx;
 }
 .orderJ{
    background-color: #9DF88F;

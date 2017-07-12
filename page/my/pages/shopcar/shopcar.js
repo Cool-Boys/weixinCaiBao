@@ -5,11 +5,8 @@ Page({
 
   },
   onShow: function () {
-    var selData;
-    var shopdata, tempData = [];
-    //缓存中的美食
-    shopdata = wx.getStorageSync('shopdata');
-    console.log(shopdata);
+    var selData, tempData = [];
+    var shopdata = this.data.refData;
     //选中的美食
     selData = wx.getStorageSync('selData');
     console.log(selData);
@@ -47,7 +44,6 @@ Page({
     
     this.setData({
       selData: selData,
-      refData: shopdata,
       shopdata: tempData,
       saucetype: tt,
       flavortype: dd,
@@ -57,6 +53,13 @@ Page({
   },
   onReady: function () {
     this.animation = wx.createAnimation()
+    var shopdata, tempData = [];
+    //缓存中的美食
+    shopdata = wx.getStorageSync('shopdata');
+    console.log(shopdata);
+    this.setData({
+      refData: shopdata
+    })
   },
   data: {
     refData: [],
@@ -314,9 +317,10 @@ var that=this;
     model.user_Id = getApp().globalData.userId;
     model.time = this.data.time;
     model.amount = amount;
-    // this.setData(
-    //   { showLoading: true }
-    // )
+  var that=this;
+  that.setData(
+      { showLoading: true }
+    )
     var url = host + '/TOrders/SaveDataForApp?data=' + JSON.stringify(model);
     wx.request({
       url: host + '/TOrders/SaveDataForApp',
@@ -327,9 +331,9 @@ var that=this;
       },
       success: function (res) {
         console.log(res)
-        // this.setData(
-        //   { showLoading: false }
-        // )
+        that.setData(
+          { showLoading: false }
+        )
         if (res.statusCode == "200") {
           wx.clearStorage('selData');
           wx.navigateTo({

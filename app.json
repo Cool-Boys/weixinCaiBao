@@ -33,13 +33,12 @@
         "selectedIconPath": "image/mselcart.png",
         "text": "购物车"
       },
-      {
-        "pagePath": "page/my/pages/myInfo/myInfo",
-        "iconPath": "image/my.png",
-        "selectedIconPath": "image/selmy1.png",
-        "text": "我的"
-      }
-     
+    {
+      "pagePath": "page/my/pages/index/index",
+      "iconPath": "image/my.png",
+      "selectedIconPath": "image/selmy1.png",
+      "text": "我的"
+    }
     ]
   },
   "networkTimeout": {

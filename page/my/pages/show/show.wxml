@@ -19,7 +19,7 @@
               <view> {{shopdata[curIndex].introduce}}</view>
             </view>
             <view style="display: flex;flex-direction:row;">
-             <label class="cle-img1" animation="{{animation}}"></label>
+              <label class="cle-img1" animation="{{animation}}"></label>
               <button type="primary" disabled="{{shopdata[curIndex].flag=='S'?false:true}}" bindtap="bindAdd">预订 ¥{{shopdata[curIndex].price}}.00</button>
               <block wx:if="{{isAdmin=='T'}}">
                 <button type="warn" style="width:240rpx" bindtap="bindEdit">编 辑</button>

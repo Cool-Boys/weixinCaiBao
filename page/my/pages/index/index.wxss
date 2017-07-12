@@ -1,25 +1,60 @@
 .container {
-  background-color: #9df88f;
-  color: #000;
-  padding: 10rpx;
-  font-size: 22rpx;
+  background-color: #F5F5F5;
+  color: black;
+ 
+  font-size: 30rpx;
 }
 
-.flex-wrp{
-  margin-top: 60rpx;
-  display:flex;
-}
-.flex-item{
-width: 200rpx;
-height:200rpx;
- font-size: 26rpx;
-}
-.flex-item-V{
-  margin: 0 auto;
-  width: 300rpx;
-  height: 200rpx;
+
+.userinfo-avatar {
+  border-radius: 128rpx;
+  width: 128rpx;
+  height: 128rpx;
+    margin-top: 20rpx;
+   margin-left:20rpx;
 }
 
-.slide-image{
-    width: 100%;
+.userinfo-nickname {
+  margin-top: 50rpx;
+  font-size: 38rpx;
+  color:black;
+  margin-left:20rpx;
+}
+.line {
+
+  border-bottom: 1rpx solid #ABABAB;
+}
+.line2 {
+  margin-bottom: 18rpx;
+  margin-top: 18rpx;
+  border-bottom: 1rpx solid #ABABAB;
+}
+.flex-wrp {
+ padding-bottom: 20rpx;
+  display: flex;
+background-color: #FAFAFA;
+}
+.flex-wrpm {
+  padding-left: 20rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  background-color: #FAFAFA;
+  display: flex;
+   margin-bottom: 20rpx;
+  margin-top: 20rpx;
+    border-top: 1rpx solid #ABABAB;
+    border-bottom: 1rpx solid #ABABAB;
+}
+.flex-item {
+  margin: auto 0rpx;
+  font-size: 26rpx;
+  width: 100%;
+  padding: 0rpx;
+}
+
+/*列表样式*/
+
+.flex-item-text {
+  margin-left: 20rpx;
+  width: 100%;
 }
